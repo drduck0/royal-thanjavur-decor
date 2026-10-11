@@ -49,8 +49,8 @@ function Index() {
     <header id="home" className="site-header page-width">
       <Brand />
       <nav className="desktop-nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#services">Our services</a><a href="#gallery">Gallery</a><a href="#about">About us</a></nav>
-      <Button variant="royal" className="header-cta h-11 px-5 text-xs" onClick={() => openEnquiry()}>Let’s plan your event <ArrowUpRight /></Button>
-      <Button variant="ghost" size="icon" className="mobile-menu" aria-label="Open navigation" onClick={() => setMenuOpen(true)}><Menu /></Button>
+      <Button variant="royal" className="hidden sm:inline-flex h-11 px-5 text-xs" onClick={() => openEnquiry()}>Let’s plan your event <ArrowUpRight /></Button>
+      <Button variant="ghost" size="icon" className="hidden max-sm:inline-flex" aria-label="Open navigation" onClick={() => setMenuOpen(true)}><Menu /></Button>
     </header>
     <main>
       <section className="hero" aria-labelledby="hero-title">

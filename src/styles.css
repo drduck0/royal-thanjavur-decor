@@ -121,6 +121,7 @@
   .service-grid { gap: 17px; }
 }
 @media (max-width: 640px) {
+  :root { --hero-shade: linear-gradient(90deg, oklch(0.13 0.021 150 / 87%), oklch(0.13 0.021 150 / 46%)); }
   .page-width { width: calc(100% - 40px); }
   .site-header { height: 80px; }
   .brand-title { font-size: 25px; }
