@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { ArrowUpRight, ArrowRight, Crown, MapPin, Flower2, Sparkles, Heart, PartyPopper, Check, Menu, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -24,6 +24,46 @@ const services = [
   { title: 'Reception decor', image: receptionPhoto, description: 'Elegant floral backdrops and picture-perfect settings to celebrate your love in style.', type: 'Reception' },
   { title: 'Traditional & function decor', image: traditionalPhoto, description: 'From meaningful family occasions to joyful celebrations, decor that feels uniquely yours.', type: 'Family function' },
 ];
+
+const aboutCards = [
+  { icon: Flower2, title: 'Wedding stages', text: 'Statement stages with beautiful blooms and thoughtful details for the beginning of your forever.' },
+  { icon: Heart, title: 'Reception decorations', text: 'Elegant floral backdrops and picture-perfect settings to celebrate your love in style.' },
+  { icon: PartyPopper, title: 'Family functions', text: 'Warm, joyful decor for engagements, birthdays and every family celebration.' },
+  { icon: Sparkles, title: 'Traditional celebrations', text: 'Rooted in Thanjavur tradition, styled with a touch of modern elegance.' },
+];
+
+function AboutSection() {
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting)) { element.classList.add('about-in'); observer.disconnect(); }
+    }, { threshold: 0.2 });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+  return (
+    <section id="about" ref={ref} className="about-cards section page-width">
+      <div className="section-heading">
+        <div><p className="eyebrow text-primary">ABOUT US</p><h2>Rooted in Thanjavur.<br /><em>Crafted for your moments.</em></h2></div>
+        <p>We create stage and function decorations that blend the warmth of our traditions with a touch of modern elegance — one thoughtful detail at a time.</p>
+      </div>
+      <div className="about-grid">
+        {aboutCards.map((card, index) => {
+          const Icon = card.icon;
+          return (
+            <article className="about-card" key={card.title} style={{ animationDelay: `${index * 110}ms` }}>
+              <Icon className="about-card-icon" />
+              <h3>{card.title}</h3>
+              <p>{card.text}</p>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
 
 function Brand() {
   return <a href="#home" className="brand" aria-label="Royal Decor Thanjavur home"><Crown className="brand-icon" /><span><span className="brand-title">Royal Decor</span><span className="brand-location">THANJAVUR</span></span></a>;
@@ -63,7 +103,7 @@ function Index() {
         </div>
         <div className="hero-caption"><MapPin size={13} /> ROOTED IN THANJAVUR. MADE FOR YOUR MOMENTS.</div>
       </section>
-      <div className="occasion-strip"><div className="occasions page-width"><span><Flower2 /> Wedding stages</span><Sparkles size={11} className="text-gold hidden sm:block" /><span><Heart /> Reception decorations</span><Sparkles size={11} className="text-gold hidden sm:block" /><span><PartyPopper /> Family functions</span><Sparkles size={11} className="text-gold hidden sm:block" /><span><Flower2 /> Traditional celebrations</span></div></div>
+      <AboutSection />
       <section id="services" className="section page-width">
         <div className="section-heading"><div><p className="eyebrow text-primary">OUR SPECIALITIES</p><h2>Every occasion.<br /><em>A beautiful expression.</em></h2></div><p>From an intimate gathering to your grandest day, we bring your vision to life, one thoughtful detail at a time.</p></div>
         <div id="gallery" className="service-grid">{services.map((service, index) => <article className="service" key={service.title}>
@@ -72,7 +112,7 @@ function Index() {
         </article>)}</div>
         <div className="mt-7 flex items-center justify-between gap-4"><p className="text-[10px] text-muted-foreground">Decoration inspiration · Illustrative images</p><Button variant="outline" asChild><Link to="/gallery">Visit the gallery <ArrowUpRight /></Link></Button></div>
       </section>
-      <section id="about" className="story section"><div className="story-inner page-width"><img src={traditionalPhoto} className="story-photo" alt="Traditional floral mandap with marigolds, banana leaves and brass lamps" width={1024} height={1024} loading="lazy" /><div><p className="eyebrow text-primary">THE ROYAL TOUCH</p><h2>Rooted in tradition.<br /><em>Inspired by you.</em></h2><p>Some moments stay with us forever. At Royal Decor Thanjavur, we believe the setting should be just as memorable.</p><p>We bring together the warmth of our traditions and the elegance of contemporary design to create decorations that reflect your story.</p><div className="story-values"><span><Check /> Personalised designs</span><span><Check /> Thoughtful details</span><span><Check /> Traditional elegance</span><span><Check /> Beautiful floral settings</span></div><Button variant="outline" className="h-11 text-xs" onClick={() => openEnquiry()}>Tell us your vision <ArrowUpRight /></Button></div></div></section>
+      <section id="story" className="story section"><div className="story-inner page-width"><img src={traditionalPhoto} className="story-photo" alt="Traditional floral mandap with marigolds, banana leaves and brass lamps" width={1024} height={1024} loading="lazy" /><div><p className="eyebrow text-primary">THE ROYAL TOUCH</p><h2>Rooted in tradition.<br /><em>Inspired by you.</em></h2><p>Some moments stay with us forever. At Royal Decor Thanjavur, we believe the setting should be just as memorable.</p><p>We bring together the warmth of our traditions and the elegance of contemporary design to create decorations that reflect your story.</p><div className="story-values"><span><Check /> Personalised designs</span><span><Check /> Thoughtful details</span><span><Check /> Traditional elegance</span><span><Check /> Beautiful floral settings</span></div><Button variant="outline" className="h-11 text-xs" onClick={() => openEnquiry()}>Tell us your vision <ArrowUpRight /></Button></div></div></section>
       <section id="contact" className="contact"><div className="page-width"><p className="eyebrow">LET’S CREATE SOMETHING BEAUTIFUL</p><h2>Your next beautiful memory<br /><em>starts here.</em></h2><p>A date, an occasion, a little inspiration. Let’s give your celebration the Royal Decor touch.</p><Button variant="gold" className="h-12 px-7 text-xs" onClick={() => openEnquiry()}>Let’s plan your event <ArrowUpRight /></Button></div></section>
     </main>
     <footer className="footer page-width"><Brand /><p>© {new Date().getFullYear()} Royal Decor Thanjavur. All rights reserved.</p><div className="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Get in touch <ArrowUpRight size={12} className="inline" /></a></div></footer>
