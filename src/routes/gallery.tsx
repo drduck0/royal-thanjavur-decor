@@ -4,6 +4,7 @@ import { Crown, Menu, ArrowUpRight, ArrowLeft, ArrowRight, Expand } from 'lucide
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import {
+  contactSection,
   galleryContact,
   gallerySection,
   navigation,
@@ -55,7 +56,7 @@ function Gallery() {
   const brand = <Link to="/" className="brand" aria-label={`${site.businessName} home`}><Crown className="brand-icon" /><span><span className="brand-title">{site.brandName}</span><span className="brand-location">{site.location}</span></span></Link>;
   const links = navigation.map(item => <NavLink key={item.label} item={item} currentPath="/gallery" />);
   return <>
-    <header className="site-header page-width">{brand}<nav className="desktop-nav" aria-label="Main navigation">{links}</nav><Button variant="royal" asChild className="hidden sm:inline-flex h-11 px-5 text-xs"><Link to="/" hash="contact">{contactCtaLabel} <ArrowUpRight /></Link></Button><Button variant="ghost" size="icon" className="hidden max-sm:inline-flex" aria-label="Open navigation" onClick={() => setMenuOpen(true)}><Menu /></Button></header>
+    <header className="site-header page-width">{brand}<nav className="desktop-nav" aria-label="Main navigation">{links}</nav><Button variant="royal" asChild className="hidden sm:inline-flex h-11 px-5 text-xs"><Link to="/" hash="contact">{contactSection.cta} <ArrowUpRight /></Link></Button><Button variant="ghost" size="icon" className="hidden max-sm:inline-flex" aria-label="Open navigation" onClick={() => setMenuOpen(true)}><Menu /></Button></header>
     <main>
       <section className="gallery-intro"><div className="page-width intro-animate"><p className="eyebrow text-gold">{gallerySection.eyebrow}</p><h1><HeadlineLines lines={gallerySection.title} /></h1><p>{gallerySection.description}</p></div></section>
       <section className="page-width" aria-label="Decoration gallery"><div className="gallery-toolbar" role="group" aria-label="Filter decorations">{categories.map(item => <Button key={item} variant={category === item ? 'royal' : 'outline'} size="sm" aria-pressed={category === item} onClick={() => { setCategory(item); setSelected(null); }}>{item}</Button>)}</div>
