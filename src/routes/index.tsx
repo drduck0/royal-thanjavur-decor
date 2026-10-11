@@ -37,8 +37,8 @@ function AboutSection() {
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { element.classList.add('about-in'); observer.disconnect(); }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries.some(entry => entry.isIntersecting)) { element.classList.add('about-in'); observer.disconnect(); }
     }, { threshold: 0.2 });
     observer.observe(element);
     return () => observer.disconnect();
