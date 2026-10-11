@@ -43,6 +43,7 @@ function NavLink({ item, currentPath }: { item: NavItem; currentPath: string }) 
     const active = item.to === currentPath;
     return <Link to={item.to} aria-current={active ? 'page' : undefined} className={active ? 'font-semibold' : undefined}>{item.label}</Link>;
   }
+  if (!item.hash) return null;
   return <Link to="/" hash={item.hash}>{item.label}</Link>;
 }
 
