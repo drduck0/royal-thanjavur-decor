@@ -1,21 +1,29 @@
 # Routes
 
-TanStack Start uses **file-based routing**. Every `.tsx` file in this directory
-defines a route. Do **not** create `src/pages/`, `src/routes/_app/index.tsx`, or
-`app/layout.tsx` — those are Next.js / Remix conventions. The only root layout
-is `src/routes/__root.tsx`.
+TanStack Start uses **file-based routing**. Each `.tsx` file in this directory
+defines a top-level URL. Do **not** create `src/pages/` or Next.js-style layouts.
 
-## Conventions
+## Royal Decor site model
+
+| URL | File | Purpose |
+| --- | --- | --- |
+| `/` | `index.tsx` | Single-page **landing** — sections use `#hash` ids (see `homeSectionIds` in `src/lib/routes.ts`) |
+| `/gallery` | `gallery.tsx` | Second **full page** — gallery grid and lightbox |
+
+- **In-page only on `/`:** About, services, FAQ, contact, etc. (`navigation` / `footerSection` hashes in `src/content/site.ts`).
+- **Separate routes:** Add `src/routes/<name>.tsx` → `/<name>`, register path in `appPaths` (`src/lib/routes.ts`), and add a `to` entry in `navigation` if it belongs in the header.
+
+Shared chrome: `SiteBrand`, `SiteNavLink` (`src/components/`).  
+Scroll: `shouldRestoreScroll` in `src/lib/routes.ts` + `src/router.tsx`.
+
+`routeTree.gen.ts` is auto-generated — do not edit by hand.
+
+## TanStack conventions
 
 | File | URL |
 | --- | --- |
 | `index.tsx` | `/` |
 | `about.tsx` | `/about` |
-| `users/index.tsx` | `/users` |
-| `users/$id.tsx` | `/users/:id` (dynamic — bare `$`, no curly braces) |
-| `posts/{-$category}.tsx` | `/posts/:category?` (optional segment) |
-| `files/$.tsx` | `/files/*` (splat — read via `_splat` param, never `*`) |
-| `_layout.tsx` | layout route (renders children via `<Outlet />`) |
-| `__root.tsx` | app shell — wraps every page; preserve `<Outlet />` |
-
-`routeTree.gen.ts` is auto-generated. Don't edit it by hand.
+| `users/$id.tsx` | `/users/:id` |
+| `_layout.tsx` | layout route (`<Outlet />` for children) |
+| `__root.tsx` | app shell — wraps every page |
