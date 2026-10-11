@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLandingMotion } from "@/hooks/use-landing-motion";
 import { EnquiryDialog, SiteFooter } from "@/components";
 import { AboutSection } from "@/components/landing/about-section";
+import { CelebrationStatsSection } from "@/components/landing/celebration-stats-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { LandingContactSection } from "@/components/landing/landing-contact-section";
 import { LandingHeroViewport } from "@/components/landing/landing-hero-viewport";
@@ -12,7 +13,7 @@ import { StorySection } from "@/components/landing/story-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { enquiry, type ServiceItem } from "@/content/site";
 import { LocalBusinessJsonLd } from "@/components/local-business-json-ld";
-import { appPaths } from "@/lib/routes";
+import { appPaths, homeSectionIds } from "@/lib/routes";
 
 export function LandingPage() {
   const mainRef = useRef<HTMLElement>(null);
@@ -23,8 +24,12 @@ export function LandingPage() {
   const [previewService, setPreviewService] = useState<ServiceItem | null>(null);
 
   useEffect(() => {
-    if (pathname === appPaths.home && !hash) {
+    if (pathname !== appPaths.home) return;
+    const scrollToPageTop = () =>
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (!hash || hash === homeSectionIds.home) {
+      scrollToPageTop();
+      requestAnimationFrame(scrollToPageTop);
     }
   }, [pathname, hash]);
 
@@ -39,6 +44,7 @@ export function LandingPage() {
       <main ref={mainRef} id="main-content" aria-label="Royal Decor Thanjavur home">
         <LandingHeroViewport onEnquiry={() => openEnquiry()} />
         <AboutSection />
+        <CelebrationStatsSection />
         <ServicesSection onPreviewService={setPreviewService} />
         <StorySection onEnquiry={() => openEnquiry()} />
         <TestimonialsSection />

@@ -3,7 +3,7 @@ import { ArrowUpRight, MapPin } from "lucide-react";
 import { hero } from "@/content/site";
 import { HeadlineLines } from "@/components/headline-lines";
 import { SiteImage } from "@/components/site-image";
-import { appPaths, homeSectionIds } from "@/lib/routes";
+import { appPaths } from "@/lib/routes";
 import { Button } from "@/components/ui/button";
 
 type LandingHeroProps = {
@@ -12,7 +12,7 @@ type LandingHeroProps = {
 
 export function LandingHero({ onEnquiry }: LandingHeroProps) {
   return (
-    <section id={homeSectionIds.home} className="hero" aria-labelledby="hero-title">
+    <section className="hero" aria-labelledby="hero-title">
       <SiteImage
         src={hero.image.src}
         className="hero-photo"

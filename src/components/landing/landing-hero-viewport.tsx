@@ -1,5 +1,6 @@
 import { SitePageHeader } from "@/components/layout/site-page-header";
 import { LandingHero } from "@/components/landing/landing-hero";
+import { homeSectionIds } from "@/lib/routes";
 
 type LandingHeroViewportProps = {
   onEnquiry: () => void;
@@ -7,7 +8,7 @@ type LandingHeroViewportProps = {
 
 export function LandingHeroViewport({ onEnquiry }: LandingHeroViewportProps) {
   return (
-    <div className="hero-viewport">
+    <div id={homeSectionIds.home} className="hero-viewport">
       <SitePageHeader variant="landing" onEnquiry={onEnquiry} />
       <LandingHero onEnquiry={onEnquiry} />
     </div>

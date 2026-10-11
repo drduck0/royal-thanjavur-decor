@@ -147,9 +147,11 @@ export const hero = {
 export const celebrationStats = {
   ariaLabel: "Our celebrations in numbers",
   items: [
-    { label: "Weddings", value: 200, suffix: "+" },
+    { label: "Weddings", value: 700, suffix: "+" },
     { label: "Birthday parties", value: 40, suffix: "+" },
     { label: "Happy clients", value: 4, suffix: "K+" },
+    { label: "Tent house", value: 400, suffix: "+" },
+    { label: "Lighting", value: 600, suffix: "+" },
   ] as { label: string; value: number; suffix: string }[],
 };
 

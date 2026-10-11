@@ -76,6 +76,24 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         });
       }
 
+      const statsRow = root.querySelector(".celebration-stats");
+      if (statsRow) {
+        const stats = gsap.utils.toArray<HTMLElement>(".celebration-stat", statsRow);
+        gsap.from(stats, {
+          scrollTrigger: {
+            trigger: statsRow,
+            start: "top 88%",
+            once: true,
+          },
+          y: 24,
+          opacity: 0,
+          duration: 0.85,
+          stagger: 0.12,
+          ease,
+          clearProps: "transform,opacity",
+        });
+      }
+
       const storyInner = root.querySelector(".story-inner");
       if (storyInner) {
         gsap.from(".story-photo", {

@@ -58,7 +58,9 @@
   }
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+  }
+  main [id]:not(#home) {
+    scroll-margin-top: 90px;
   }
   body {
     margin: 0;
@@ -298,11 +300,28 @@
   .hero-bottom > * {
     pointer-events: auto;
   }
-  .celebration-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px 40px;
+  .celebration-stats-section {
+    padding-block: 44px 48px;
+  }
+  .celebration-stats-section__inner {
     width: 100%;
+  }
+  .celebration-stats {
+    display: flex;
+    align-items: flex-start;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  .celebration-stat {
+    flex: 1 1 0;
+    min-width: 0;
+    text-align: center;
+    padding: 4px clamp(6px, 1.2vw, 16px);
+  }
+  .celebration-stat + .celebration-stat {
+    border-left: 1px solid var(--border);
   }
   .celebration-stat-number {
     font-variant-numeric: tabular-nums;
@@ -1031,8 +1050,19 @@
     grid-template-columns: 1fr;
   }
   .celebration-stats {
-    grid-template-columns: 1fr;
-    gap: 26px;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .celebration-stat {
+    padding: 22px 0 4px;
+  }
+  .celebration-stat + .celebration-stat {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+  .celebration-stat:first-child {
+    padding-top: 4px;
   }
   .brand-title {
     font-size: 25px;

@@ -24,7 +24,9 @@ export const homeSectionIds = {
 
 export type HomeSectionId = (typeof homeSectionIds)[keyof typeof homeSectionIds];
 
-/** Scroll restoration: preserve position for hash jumps; open `/` at the hero. */
+/** Scroll restoration: keep `/` and `/#home` at the top; preserve other hash jumps. */
 export function shouldRestoreScroll(pathname: string, hash: string): boolean {
-  return pathname !== appPaths.home || Boolean(hash);
+  if (pathname !== appPaths.home) return true;
+  if (!hash || hash === homeSectionIds.home) return false;
+  return true;
 }

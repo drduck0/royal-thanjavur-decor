@@ -1,4 +1,5 @@
 export { AboutSection } from "./about-section";
+export { CelebrationStatsSection } from "./celebration-stats-section";
 export { FaqSection } from "./faq-section";
 export { LandingContactSection } from "./landing-contact-section";
 export { LandingHero } from "./landing-hero";
