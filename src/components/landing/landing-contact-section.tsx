@@ -4,11 +4,7 @@ import { ContactCtaSection } from "@/components/layout/contact-cta-section";
 import { homeSectionIds } from "@/lib/routes";
 import { Button } from "@/components/ui/button";
 
-type LandingContactSectionProps = {
-  onEnquiry: () => void;
-};
-
-export function LandingContactSection({ onEnquiry }: LandingContactSectionProps) {
+export function LandingContactSection() {
   return (
     <ContactCtaSection
       id={homeSectionIds.contact}
@@ -16,7 +12,7 @@ export function LandingContactSection({ onEnquiry }: LandingContactSectionProps)
       title={contactSection.title}
       description={contactSection.description}
       actions={
-        <Button variant="gold" className="h-12 px-7 text-xs" onClick={onEnquiry}>
+        <Button variant="gold" type="button" className="h-12 px-7 text-xs">
           {contactSection.cta} <ArrowUpRight />
         </Button>
       }

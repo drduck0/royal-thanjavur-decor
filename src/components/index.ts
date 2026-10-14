@@ -1,6 +1,5 @@
 /** Shared site chrome and dialogs — import page sections from `@/components/landing` or `@/components/gallery`. */
 export { GalleryPage } from "./gallery";
-export { EnquiryDialog } from "./enquiry-dialog";
 export * from "./layout";
 export { HeadlineLines } from "./headline-lines";
 export { LocalBusinessJsonLd } from "./local-business-json-ld";

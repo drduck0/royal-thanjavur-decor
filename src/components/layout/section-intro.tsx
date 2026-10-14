@@ -14,7 +14,7 @@ export function SectionIntro({
   title,
   description,
   titleId,
-  eyebrowClassName = "eyebrow text-primary",
+  eyebrowClassName = "eyebrow text-primary text-3xl",
 }: SectionIntroProps) {
   return (
     <div className="section-heading">

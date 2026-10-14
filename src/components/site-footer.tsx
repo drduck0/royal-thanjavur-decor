@@ -43,7 +43,7 @@ export function SiteFooter() {
                 className="site-footer__contact-row"
               >
                 <Instagram aria-hidden className="site-footer__icon" />
-                {contactDetails.instagramLabel}
+                {contactDetails.instagramHandle}
               </a>
             </li>
             <li>

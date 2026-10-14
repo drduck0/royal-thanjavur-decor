@@ -27,7 +27,12 @@ describe("App routing", () => {
     const matches = router.matchRoutes({
       pathname: appPaths.home,
       search: {},
+      searchStr: "",
       hash: "services",
+      href: `${appPaths.home}#services`,
+      state: { __TSR_index: 0 },
+      publicHref: `${appPaths.home}#services`,
+      external: false,
     });
     expect(matches.at(-1)?.routeId).toBe("/");
   });

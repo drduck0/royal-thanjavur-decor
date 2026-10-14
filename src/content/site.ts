@@ -39,7 +39,7 @@ export interface ServiceItem {
   title: string;
   image: string;
   description: string;
-  /** Occasion name used to preselect the enquiry form. */
+  /** Occasion label (e.g. for future contact flows). */
   type: string;
 }
 
@@ -56,14 +56,13 @@ export const site = {
   location: "THANJAVUR",
   businessName: "Royal Decor Thanjavur",
   tagline: "Your celebration, beautifully imagined.",
-  enquiryFileName: "royal-decor-event-enquiry.txt",
 };
 
 /** Public site URL for canonical links and social previews (no trailing slash). */
 export const siteSeo = {
   siteUrl:
-    typeof import.meta.env.VITE_SITE_URL === "string"
-      ? import.meta.env.VITE_SITE_URL.replace(/\/$/, "")
+    typeof import.meta.env["VITE_SITE_URL"] === "string"
+      ? import.meta.env["VITE_SITE_URL"].replace(/\/$/, "")
       : "",
   locale: "en_IN",
 };
@@ -75,9 +74,9 @@ export const siteImages = {
 // ---------- Navigation (header) ----------
 export const navigation: NavItem[] = [
   { label: "Home", hash: "home" },
+  { label: "About Us", hash: "about" },
   { label: "Gallery", to: appPaths.gallery },
-  { label: "About us", hash: "about" },
-  { label: "FAQ", hash: "faq" },
+  { label: "Review", hash: "testimonials" },
 ];
 
 // ---------- Contact details (header, contact section, links) ----------
@@ -85,8 +84,7 @@ const whatsappNumber = "918754615441";
 const whatsappMessage = "Hi Royal Decor Thanjavur, I'd like to discuss event decor.";
 
 export const contactDetails = {
-  email: "hello@royaldecorthanjavur.com",
-  emailLabel: "Email us",
+  email: "royaldecorthanjavur@gmail.com",
   phoneDisplay: "+91 87546 15441",
   phoneHref: "tel:+918754615441",
   whatsappNumber,
@@ -94,8 +92,9 @@ export const contactDetails = {
   whatsappHref: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
   whatsappLabel: "WhatsApp",
   whatsappFloatLabel: "Chat with us on WhatsApp",
-  instagramHref: "https://www.instagram.com/",
-  instagramLabel: "Instagram",
+  instagramHref: "https://www.instagram.com/royal_decor.thanjavur",
+  instagramHandle: "@royal_decor.thanjavur",
+  instagramLabel: "Royal Decor Thanjavur on Instagram",
   serviceAreaLabel: "Service area",
   serviceArea: "Thanjavur and nearby towns — including Kumbakonam, Mannargudi, and Ariyalur.",
   responseTime: "We aim to reply within one business day.",
@@ -150,20 +149,24 @@ export const celebrationStats = {
     { label: "Weddings", value: 700, suffix: "+" },
     { label: "Birthday parties", value: 40, suffix: "+" },
     { label: "Happy clients", value: 4, suffix: "K+" },
-    { label: "Tent house", value: 400, suffix: "+" },
-    { label: "Lighting", value: 600, suffix: "+" },
-  ] as { label: string; value: number; suffix: string }[],
+    { label: "Tent house", value: 400, suffix: "+", showOnMobile: false },
+    { label: "Lighting", value: 600, suffix: "+", showOnMobile: false },
+  ] as {
+    label: string
+    value: number
+    suffix: string
+    showOnMobile?: boolean
+  }[],
 };
 
 // ---------- About us cards ----------
 export const aboutSection = {
   eyebrow: "ABOUT US",
   title: [
-    { text: "Rooted in Thanjavur." },
-    { text: "Crafted for your moments.", accent: true },
+    { text: "26 Years of" },
+    { text: "Excellence", accent: true },
   ] as TitleLine[],
-  intro:
-    "We create stage and function decorations that blend the warmth of our traditions with a touch of modern elegance — one thoughtful detail at a time.",
+  intro:"",
   cards: [
     {
       icon: Flower2,
@@ -184,6 +187,7 @@ export const aboutSection = {
       icon: Cake,
       title: "Birthday events",
       text: "Colourful themes, balloon accents and photo-ready backdrops for milestones at every age.",
+      showOnMobile: false,
     },
     {
       icon: Sparkles,
@@ -194,18 +198,26 @@ export const aboutSection = {
       icon: CalendarDays,
       title: "Event planner",
       text: "Timelines, vendor coordination and on-the-day support so your celebration runs smoothly.",
+      showOnMobile: false,
     },
     {
       icon: Tent,
       title: "Tent house",
       text: "Shamiyanas, flooring and covered spaces sized for your guest list and venue.",
+      showOnMobile: false,
     },
     {
       icon: Lightbulb,
       title: "Lighting",
       text: "Warm ambience, stage washes and accent lights that make every corner photograph beautifully.",
+      showOnMobile: false,
     },
-  ] as { icon: LucideIcon; title: string; text: string }[],
+  ] as {
+    icon: LucideIcon
+    title: string
+    text: string
+    showOnMobile?: boolean
+  }[],
 };
 
 // ---------- Services / specialities ----------
@@ -354,9 +366,9 @@ export const faqSection = {
         "We can work with fresh blooms, mixed arrangements, or reusable elements depending on your occasion, season, and preferences.",
     },
     {
-      question: "How do enquiries work right now?",
+      question: "How can we get in touch?",
       answer:
-        "Use the event brief form to download your details, then share it with us by phone, WhatsApp, or email. We’ll follow up to discuss ideas and next steps.",
+        "Share your date, venue, and ideas by phone, WhatsApp, or email. We’ll follow up to discuss decoration options and next steps.",
     },
   ] as FaqItem[],
 };
@@ -370,7 +382,7 @@ export const contactSection = {
   ] as TitleLine[],
   description:
     "A date, an occasion, a little inspiration. Let’s give your celebration the Royal Decor touch.",
-  cta: "Let’s plan your event",
+  cta: "Let’s Plan Your Event",
 };
 
 export const siteHeader = {
@@ -433,29 +445,3 @@ export const galleryContact = {
   cta: "Plan your celebration",
 };
 
-// ---------- Enquiry dialog ----------
-export const enquiry = {
-  dialogTitle: "Your celebration, your vision.",
-  dialogDescription:
-    "Prepare your event brief. Online enquiries aren’t connected yet; download it to share with Royal Decor.",
-  briefHeading: "ROYAL DECOR THANJAVUR — EVENT ENQUIRY",
-  fallbackMessage: "I would like to discuss decoration ideas.",
-  defaultOccasion: "Wedding",
-  occasions: ["Wedding", "Reception", "Family function", "Other celebration"],
-  downloadButton: "Download event brief",
-  editButton: "Edit details",
-  submitButton: "Prepare my event brief",
-  fields: {
-    name: "Your name",
-    namePlaceholder: "Name",
-    phone: "Phone number",
-    phonePlaceholder: "Phone number",
-    occasion: "Occasion",
-    date: "Event date",
-    venue: "Venue / location",
-    venuePlaceholder: "Where are you celebrating?",
-    message: "What do you have in mind?",
-    messagePlaceholder: "Colours, flowers, themes… tell us your ideas.",
-    noDate: "To be decided",
-  },
-};

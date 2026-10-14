@@ -26,6 +26,7 @@
   --color-overlay: var(--overlay);
   --font-sans: "Manrope", sans-serif;
   --font-display: "Playfair Display", Georgia, serif;
+  --font-nav: "DM Serif Display", Georgia, serif;
   --font-banner: "Cormorant Garamond", Georgia, serif;
   --radius-sm: 3px;
   --radius-md: 4px;
@@ -40,10 +41,11 @@
   --secondary: oklch(0.97 0.009 25);
   --muted-foreground: oklch(0.48 0.025 25);
   --border: oklch(0.89 0.015 25);
-  --gold: oklch(0.835486335 0.159711863 83.0511482);
+  --gold: oklab(83.548% 0.01931 0.15847);
   --hero-foreground: oklch(0.99 0.006 90);
   --overlay: oklch(0.235385823 0.087017151 29.1435954 / 80%);
   --destructive: oklch(0.55 0.19 28);
+  --header-cta-accent: #e9bc86;
   --hero-shade: linear-gradient(
     90deg,
     oklch(0.235385823 0.087017151 29.1435954 / 94%) 0%,
@@ -90,32 +92,45 @@
     display: flex;
     padding: 0 14% 0 14%;
     min-height: 35px;
-    background: oklch(0.235385823 0.087017151 29.1435954);
-    color: var(--primary-foreground);
+    /* background: oklch(0.235385823 0.087017151 29.1435954); */
+    background: radial-gradient(circle,rgba(255, 255, 255, 1) 0%, rgba(249, 234, 131, 1) 0%, rgba(179, 125, 53, 1) 100%, rgba(179, 125, 53, 1) 100%);
+    color: var(--primary);
   }
   .site-header-1--contact {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-    column-gap: 12px;
-    row-gap: 6px;
-    padding: 6px clamp(12px, 4vw, 14%);
-  }
-  .site-header-1__contact {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 7px;
+    justify-content: center;
+    gap: 8px;
+    min-height: 35px;
+    padding-block: 8px;
+    padding-inline: clamp(12px, 4vw, 8%);
+  }
+  .site-header-1__contact-all {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px clamp(12px, 2vw, 20px);
+    width: 100%;
     min-width: 0;
-    font-size: 13px;
+    font-size: clamp(11px, 1.15vw, 13px);
     font-weight: 600;
     letter-spacing: 0.02em;
   }
-  .site-header-1__contact--start {
-    justify-self: start;
+  .site-header-1__contact-cluster {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
   }
-  .site-header-1__contact--end {
-    justify-self: end;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+  .site-header-1__contact-cluster--instagram {
+    text-decoration: none;
+    color: inherit;
+  }
+  .site-header-1__contact-cluster--instagram:hover {
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
   .site-header-1__icon {
     width: 16px;
@@ -141,17 +156,14 @@
     text-decoration: none;
     opacity: 0.85;
   }
-  .site-header-1__link-text {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 22ch;
+  .site-header-1--contact .site-header-1__link-text {
+    text-wrap: pretty;
   }
-  .site-header-1__contact--end .site-header-1__link-text {
-    max-width: 14ch;
+  .site-header-1--contact .site-header-1__title {
+    width: 100%;
+    max-width: 100%;
   }
   .site-header-1__title {
-    justify-self: center;
     text-align: center;
     font-family: var(--font-banner);
     font-size: clamp(1.05rem, 2.8vw, 1.65rem);
@@ -202,9 +214,8 @@
   .desktop-nav {
     display: flex;
     align-items: center;
-    gap: 34px;
-    font-size: 13px;
-    font-weight: 700;
+    gap: 80px;
+    font-size: 15px;
   }
   .desktop-nav a {
     transition: color 0.2s;
@@ -264,6 +275,7 @@
     background: var(--gold);
   }
   .hero h1 {
+    font-family: var(--font-nav);
     font-size: 64px;
     line-height: 1.12;
     margin: 24px 0 18px;
@@ -368,6 +380,9 @@
     gap: 30px;
     margin-bottom: 35px;
   }
+  .section-heading .eyebrow {
+    font-family: var(--font-nav);
+  }
   .section-heading h2,
   .story h2,
   .testimonials h2,
@@ -470,12 +485,14 @@
   }
   .story {
     background: var(--secondary);
+    overflow-x: clip;
   }
   .story-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 90px;
     align-items: center;
+    overflow-x: clip;
   }
   .story-photo {
     aspect-ratio: 1.15;
@@ -769,6 +786,58 @@
   .site-page-header .site-page-header__nav {
     flex: 1 1 auto;
     justify-content: center;
+    font-family: var(--font-nav);
+  }
+  .site-page-header .site-page-header__nav a {
+    font-family: inherit;
+  }
+  .site-page-header .site-header__cta {
+    border: 1px solid var(--header-cta-accent);
+    text-transform: capitalize;
+    font-family: var(--font-nav);
+    height: 44px;
+    padding-inline: 20px;
+    font-size: 12px;
+  }
+  .site-header__cta-text {
+    transition:
+      font-size 0.28s ease-in,
+      opacity 0.28s ease-in;
+  }
+  .site-header__cta-text--short {
+    display: none;
+  }
+  .site-page-header .site-header__cta:hover .site-header__cta-text {
+    font-size: 13px;
+  }
+  .site-header__cta-icon {
+    position: relative;
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .site-header__cta-icon svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--header-cta-accent);
+    transition:
+      opacity 0.28s ease,
+      transform 0.28s ease;
+  }
+  .site-header__cta-icon-right {
+    opacity: 0;
+    transform: translate(-3px, 3px);
+  }
+  .site-page-header .site-header__cta:hover .site-header__cta-icon-up {
+    opacity: 0;
+    transform: translate(3px, -3px);
+  }
+  .site-page-header .site-header__cta:hover .site-header__cta-icon-right {
+    opacity: 1;
+    transform: translate(0, 0);
   }
   .whatsapp-float {
     position: fixed;
@@ -797,38 +866,6 @@
   .whatsapp-float:focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 3px;
-  }
-  .form-field {
-    display: grid;
-    gap: 7px;
-    font-size: 12px;
-  }
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    border: 1px solid var(--border);
-    background: var(--background);
-    padding: 11px 12px;
-    border-radius: 4px;
-    width: 100%;
-    color: var(--foreground);
-    font: inherit;
-  }
-  .form-field input:focus,
-  .form-field select:focus,
-  .form-field textarea:focus {
-    outline: 1px solid var(--primary);
-  }
-  .enquiry-form {
-    display: grid;
-    gap: 16px;
-  }
-  .enquiry-preview {
-    background: var(--secondary);
-    padding: 18px;
-    font-size: 13px;
-    white-space: pre-wrap;
-    line-height: 1.8;
   }
   .intro-animate {
     animation: rise-in 0.9s ease both;
@@ -942,29 +979,6 @@
     gap: 17px;
   }
 }
-@media (max-width: 380px) {
-  .site-header-1--contact .site-header-1__link-text {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-  }
-  .site-header-1--contact .site-header-1__contact {
-    position: relative;
-  }
-  .site-header-1--contact .site-header-1__link {
-    display: flex;
-    align-items: center;
-    min-height: 28px;
-    min-width: 28px;
-    justify-content: center;
-  }
-}
 @media (max-width: 640px) {
   :root {
     --hero-shade: linear-gradient(
@@ -972,40 +986,6 @@
       oklch(0.235385823 0.087017151 29.1435954 / 94%),
       oklch(0.235385823 0.087017151 29.1435954 / 62%)
     );
-  }
-  .site-header-1--contact {
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "title title"
-      "start end";
-    padding-block: 8px;
-    padding-inline: 12px;
-  }
-  .site-header-1--contact .site-header-1__title {
-    grid-area: title;
-    justify-self: center;
-    width: 100%;
-    text-align: center;
-  }
-  .site-header-1--contact .site-header-1__title.brand-title {
-    font-size: clamp(1.1rem, 5.2vw, 1.35rem);
-  }
-  .site-header-1--contact .site-header-1__contact--start {
-    grid-area: start;
-  }
-  .site-header-1--contact .site-header-1__contact--end {
-    grid-area: end;
-  }
-  .site-header-1--contact .site-header-1__contact {
-    font-size: 12px;
-    gap: 5px;
-  }
-  .site-header-1--contact .site-header-1__icon {
-    width: 15px;
-    height: 15px;
-  }
-  .site-header-1--contact .site-header-1__contact--end .site-header-1__link-text {
-    max-width: 11ch;
   }
   .page-width {
     width: calc(100% - 40px);
@@ -1031,6 +1011,22 @@
   }
   .site-header__cta {
     flex-shrink: 0;
+    height: 36px;
+    padding-inline: 12px;
+    font-size: 10px;
+  }
+  .site-page-header .site-header__cta:hover .site-header__cta-text {
+    font-size: 11px;
+  }
+  .site-header__cta-text--full {
+    display: none;
+  }
+  .site-header__cta-text--short {
+    display: inline;
+  }
+  .site-header__cta-icon {
+    width: 14px;
+    height: 14px;
   }
   .site-header-1.page-width {
     flex-wrap: wrap;
@@ -1080,7 +1076,7 @@
     padding-block: 60px 78px;
   }
   .hero h1 {
-    font-size: 43px;
+    font-size: 42px;
     margin-top: 24px;
   }
   .hero-description {
@@ -1098,6 +1094,10 @@
   .eyebrow {
     font-size: 9px;
     letter-spacing: 1.8px;
+  }
+  .about-card--desktop-only,
+  .celebration-stat--desktop-only {
+    display: none;
   }
   .about-grid {
     grid-template-columns: 1fr;

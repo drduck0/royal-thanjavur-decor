@@ -10,10 +10,9 @@ import { SiteContactBar } from "@/components/landing/site-contact-bar";
 
 type SitePageHeaderProps = {
   variant: "landing" | "gallery";
-  onEnquiry?: () => void;
 };
 
-export function SitePageHeader({ variant, onEnquiry }: SitePageHeaderProps) {
+export function SitePageHeader({ variant }: SitePageHeaderProps) {
   const headerClass =
     variant === "landing"
       ? "site-header site-page-header page-width"
@@ -37,12 +36,11 @@ export function SitePageHeader({ variant, onEnquiry }: SitePageHeaderProps) {
           ))}
         </nav>
         <div className="site-page-header__actions">
-          {variant === "landing" && onEnquiry ? (
+          {variant === "landing" ? (
             <Button
               variant="royal"
               type="button"
               className="site-header__cta h-11 px-5 text-xs max-sm:h-9 max-sm:px-3 max-sm:text-[10px]"
-              onClick={onEnquiry}
             >
               <span className="max-sm:hidden">{siteHeader.primaryCta}</span>
               <span className="hidden max-sm:inline">{siteHeader.primaryCtaShort}</span>

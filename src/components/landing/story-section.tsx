@@ -5,11 +5,7 @@ import { SiteImage } from "@/components/site-image";
 import { homeSectionIds } from "@/lib/routes";
 import { Button } from "@/components/ui/button";
 
-type StorySectionProps = {
-  onEnquiry: () => void;
-};
-
-export function StorySection({ onEnquiry }: StorySectionProps) {
+export function StorySection() {
   return (
     <section
       id={homeSectionIds.story}
@@ -40,7 +36,7 @@ export function StorySection({ onEnquiry }: StorySectionProps) {
               </span>
             ))}
           </div>
-          <Button variant="outline" className="h-11 text-xs" onClick={onEnquiry}>
+          <Button variant="outline" type="button" className="h-11 text-xs">
             {storySection.cta} <ArrowUpRight />
           </Button>
         </div>

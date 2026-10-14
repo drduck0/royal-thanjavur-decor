@@ -6,11 +6,7 @@ import { SiteImage } from "@/components/site-image";
 import { appPaths } from "@/lib/routes";
 import { Button } from "@/components/ui/button";
 
-type LandingHeroProps = {
-  onEnquiry: () => void;
-};
-
-export function LandingHero({ onEnquiry }: LandingHeroProps) {
+export function LandingHero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
       <SiteImage
@@ -28,8 +24,8 @@ export function LandingHero({ onEnquiry }: LandingHeroProps) {
           <HeadlineLines lines={hero.title} />
         </h1>
         <p className="hero-description">{hero.description}</p>
-        <div className="hero-actions">
-          <Button variant="gold" className="h-12 px-6 text-xs" onClick={onEnquiry}>
+        {/* <div className="hero-actions">
+          <Button variant="gold" type="button" className="h-12 px-6 text-xs">
             {hero.primaryCta} <ArrowUpRight />
           </Button>
           <Button variant="heroOutline" asChild className="h-12 px-6 text-xs">
@@ -37,7 +33,7 @@ export function LandingHero({ onEnquiry }: LandingHeroProps) {
               {hero.secondaryCta} <ArrowUpRight />
             </Link>
           </Button>
-        </div>
+        </div> */}
       </div>
       <p className="hero-caption" aria-label={hero.caption}>
         <MapPin size={13} aria-hidden /> {hero.caption}

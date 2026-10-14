@@ -12,13 +12,21 @@ type CelebrationStatProps = {
   suffix: string;
   delayMs: number;
   run: boolean;
+  showOnMobile?: boolean;
 };
 
 function easeOutCubic(t: number) {
   return 1 - Math.pow(1 - t, 3);
 }
 
-function CelebrationStat({ label, value, suffix, delayMs, run }: CelebrationStatProps) {
+function CelebrationStat({
+  label,
+  value,
+  suffix,
+  delayMs,
+  run,
+  showOnMobile,
+}: CelebrationStatProps) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -55,7 +63,13 @@ function CelebrationStat({ label, value, suffix, delayMs, run }: CelebrationStat
   }, [run, value, delayMs]);
 
   return (
-    <li className="celebration-stat">
+    <li
+      className={
+        showOnMobile === false
+          ? "celebration-stat celebration-stat--desktop-only"
+          : "celebration-stat"
+      }
+    >
       <p className="celebration-stat-value">
         <span className="celebration-stat-number">{display}</span>
         <span className="celebration-stat-suffix">{suffix}</span>
@@ -79,11 +93,11 @@ export function CelebrationStatsSection() {
     }
 
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setAnimate(true);
-          observer.disconnect();
-        }
+      (entries) => {
+        const entry = entries[0];
+        if (!entry?.isIntersecting) return;
+        setAnimate(true);
+        observer.disconnect();
       },
       { threshold: 0.25, rootMargin: "0px 0px -8% 0px" },
     );
@@ -109,6 +123,7 @@ export function CelebrationStatsSection() {
               suffix={item.suffix}
               delayMs={index * STAGGER_MS}
               run={animate}
+              {...(item.showOnMobile === false ? { showOnMobile: false } : {})}
             />
           ))}
         </ul>

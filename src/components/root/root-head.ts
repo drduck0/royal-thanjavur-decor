@@ -2,7 +2,7 @@ import type { LinkHTMLAttributes } from "react";
 import appCss from "@/styles.css?url";
 
 const googleFontsStylesheet =
-  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap";
+  "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap";
 
 /** Default document head shared by all routes (child routes may override meta). */
 export function rootHead() {

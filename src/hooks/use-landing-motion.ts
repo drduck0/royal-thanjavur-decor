@@ -96,27 +96,34 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
 
       const storyInner = root.querySelector(".story-inner");
       if (storyInner) {
+        const storyUsesVerticalMotion = window.matchMedia(
+          "(max-width: 640px)",
+        ).matches;
         gsap.from(".story-photo", {
           scrollTrigger: {
             trigger: storyInner,
             start: "top 78%",
-            toggleActions: "play none none none",
+            once: true,
           },
-          x: -48,
+          x: storyUsesVerticalMotion ? 0 : -48,
+          y: storyUsesVerticalMotion ? 36 : 0,
           opacity: 0,
           duration: 1.25,
           ease,
+          clearProps: "transform,opacity",
         });
         gsap.from(".story-inner > div", {
           scrollTrigger: {
             trigger: storyInner,
             start: "top 78%",
-            toggleActions: "play none none none",
+            once: true,
           },
-          x: 48,
+          x: storyUsesVerticalMotion ? 0 : 48,
+          y: storyUsesVerticalMotion ? 28 : 0,
           opacity: 0,
           duration: 1.25,
           ease,
+          clearProps: "transform,opacity",
         });
       }
 
