@@ -1,7 +1,23 @@
-import stagePhoto from "@/assets/royal-wedding-stage.jpg";
+import brandLogo from "@/assets/brand/logos.png";
+import heroStagePhoto from "@/assets/hero/hero-wedding-stage.jpg";
+import stagePhoto from "@/assets/gallery/royal-wedding-stage.jpg";
+import weddingStageDecorPhoto from "@/assets/specialise/wedding-stage.png";
+import birthdayEventPhoto from "@/assets/specialise/birthday-stage.png";
+import pubertyEventPhoto from "@/assets/specialise/puberty-stage.png";
+import babyShowerPhoto from "@/assets/specialise/baby-shower-stage.png";
+import houseWarmingPhoto from "@/assets/specialise/house-warming.jpg";
+import engagementPhoto from "@/assets/specialise/engagement-stage.jpg";
+import specialWorkBlushBackdrop from "@/assets/special-works/blush-backdrop.png";
+import specialWorkGardenBanquet from "@/assets/special-works/garden-banquet.png";
+import specialWorkGardenPavilion from "@/assets/special-works/garden-pavilion.png";
+import specialWorkCelebrationCanopy from "@/assets/special-works/celebration-canopy.png";
+import specialWorkBanquetDisplay from "@/assets/special-works/banquet-display.png";
+import specialWorkFairyLights from "@/assets/special-works/fairy-lights.png";
+import specialWorkBananaLeafStage from "@/assets/special-works/banana-leaf-stage.png";
+import specialWorkWeddingSedan from "@/assets/special-works/wedding-sedan.png";
 import { appPaths } from "@/lib/routes";
-import receptionPhoto from "@/assets/reception-decor.jpg";
-import traditionalPhoto from "@/assets/traditional-decor.jpg";
+import receptionPhoto from "@/assets/gallery/reception-decor.jpg";
+import traditionalPhoto from "@/assets/gallery/traditional-decor.jpg";
 import {
   CalendarDays,
   Cake,
@@ -25,6 +41,9 @@ export interface TitleLine {
   text: string;
   /** Displayed in italic script style when true. */
   accent?: boolean;
+  /** Count-up animation (celebration-stats style); rendered before `text`. */
+  animatedValue?: number;
+  animatedSuffix?: string;
 }
 
 export interface NavItem {
@@ -68,6 +87,7 @@ export const siteSeo = {
 };
 
 export const siteImages = {
+  logo: brandLogo,
   logoAlt: `${site.businessName} — home`,
 };
 
@@ -135,11 +155,11 @@ export const hero = {
     "Your moments deserve a beautiful setting. Thoughtfully crafted stage and function decorations, made with love in Thanjavur.",
   primaryCta: "Plan your celebration",
   secondaryCta: "Explore our decor",
+  galleryCta: "Visit the gallery",
   image: {
-    src: stagePhoto,
-    alt: "Grand floral wedding stage with gold arches, jasmine flowers and an ivory sofa",
+    src: heroStagePhoto,
+    alt: "Symmetrical floral wedding stage with pink backdrop, carved sofa and red patterned carpet",
   },
-  caption: "ROOTED IN THANJAVUR. MADE FOR YOUR MOMENTS.",
 };
 
 // ---------- Celebration stats (reusable block) ----------
@@ -147,10 +167,9 @@ export const celebrationStats = {
   ariaLabel: "Our celebrations in numbers",
   items: [
     { label: "Weddings", value: 700, suffix: "+" },
-    { label: "Birthday parties", value: 40, suffix: "+" },
-    { label: "Happy clients", value: 4, suffix: "K+" },
-    { label: "Tent house", value: 400, suffix: "+", showOnMobile: false },
-    { label: "Lighting", value: 600, suffix: "+", showOnMobile: false },
+    { label: "Birthday events", value: 40, suffix: "+" },
+    { label: "Tent house", value: 1, suffix: "K+" },
+    { label: "Happy customers", value: 5, suffix: "K+" },
   ] as {
     label: string
     value: number
@@ -159,14 +178,36 @@ export const celebrationStats = {
   }[],
 };
 
-// ---------- About us cards ----------
+// ---------- About us ----------
 export const aboutSection = {
   eyebrow: "ABOUT US",
   title: [
-    { text: "26 Years of" },
+    { animatedValue: 26, animatedSuffix: "+", text: " Years of " },
     { text: "Excellence", accent: true },
   ] as TitleLine[],
-  intro:"",
+  intro: "",
+  image: {
+    src: traditionalPhoto,
+    alt: "Traditional celebration decor with floral mandap and warm lighting",
+  },
+  openingParagraphs: [
+    `Founded in 2000, ${site.brandName} started as a small family business with a big dream — to make every celebration in Thanjavur unforgettable.`,
+    "Led by our founder, Mr. S. Rajendran, CRA DP TMCH (Rtd chief Radiographer TMCH), our journey began with a passion for creativity, an eye for detail, and a commitment to making every event special. His dedication and love for artistry earned the trust of families across the region.",
+  ],
+  directorsHeading: "Our Directors",
+  directorsParagraph:
+    "Carrying forward this legacy, our directors, Mr. Ramesh Raja Rajendran and Mrs. Indhumathi Rajendran, continue to expand the business with fresh ideas, innovative designs, and a vision for excellence. Under their leadership, Royal Decor has grown to offer a wide range of decoration services, transforming weddings, engagements, receptions, and special occasions into unforgettable experiences.",
+  closingBlocks: [
+    {
+      heading: "Full-service celebrations",
+      body:
+        "Over the years, we have continued to grow as a full-service decoration company, bringing together creativity, quality, and professional service to create beautiful celebrations tailored to every client’s vision and budget.",
+    },
+    {
+      heading: "Our promise today",
+      body: `Today, ${site.brandName} proudly stands as a trusted name in event decoration, committed to quality, creativity, and customer satisfaction. Every celebration we create reflects our passion for perfection and our promise to make your special moments truly memorable.`,
+    },
+  ],
   cards: [
     {
       icon: Flower2,
@@ -222,38 +263,118 @@ export const aboutSection = {
 
 // ---------- Services / specialities ----------
 export const servicesSection = {
-  eyebrow: "OUR SPECIALITIES",
+  eyebrow: "WHAT WE SPECIALISE IN",
   title: [
     { text: "Every occasion." },
     { text: "A beautiful expression.", accent: true },
   ] as TitleLine[],
   description:
-    "From an intimate gathering to your grandest day, we bring your vision to life, one thoughtful detail at a time.",
+    "From wedding stages to intimate family functions, we design decor that reflects your story and elevates every moment.",
   footnote: "Decoration inspiration · Illustrative images",
   galleryCta: "Visit the gallery",
-  previewDescription: "Decoration inspiration for your celebration. Illustrative image.",
-  previewCta: "Plan a celebration like this",
   items: [
     {
-      title: "Wedding stage decor",
-      image: stagePhoto,
+      title: "Wedding Stages",
+      image: weddingStageDecorPhoto,
       description:
         "Statement stages, beautiful blooms and thoughtful details for the beginning of your forever.",
       type: "Wedding",
     },
     {
-      title: "Reception decor",
-      image: receptionPhoto,
+      title: "Birthday Events",
+      image: birthdayEventPhoto,
       description:
-        "Elegant floral backdrops and picture-perfect settings to celebrate your love in style.",
-      type: "Reception",
+        "Playful themes, balloon styling and picture-perfect stages for first birthdays and every milestone.",
+      type: "Birthday",
     },
     {
-      title: "Traditional & function decor",
-      image: traditionalPhoto,
+      title: "House Warming",
+      image: houseWarmingPhoto,
       description:
-        "From meaningful family occasions to joyful celebrations, decor that feels uniquely yours.",
-      type: "Family function",
+        "Floral entrance décor, rangoli and traditional welcomes that make your new home feel blessed from day one.",
+      type: "House warming",
+    },
+    {
+      title: "Puberty",
+      image: pubertyEventPhoto,
+      description:
+        "Traditional floral stages and thoughtful details to honour this meaningful coming-of-age celebration.",
+      type: "Puberty",
+    },
+    {
+      title: "Baby Shower",
+      image: babyShowerPhoto,
+      description:
+        "Warm, elegant stages with florals and thoughtful details to welcome your little one in style.",
+      type: "Baby shower",
+    },
+    {
+      title: "Engagement",
+      image: engagementPhoto,
+      description:
+        "Romantic floral stages and elegant backdrops to celebrate the beginning of your journey together.",
+      type: "Engagement",
+    },
+  ] as ServiceItem[],
+};
+
+// ---------- Special works ----------
+export const specialWorksSection = {
+  eyebrow: "OUR SPECIAL WORKS IN WEDDINGS",
+  title: [
+    { text: "Beyond the stage." },
+    { text: "Every detail considered.", accent: true },
+  ] as TitleLine[],
+  description:
+    "From welcome boards to tent draping and traditional touches — the finishing elements that complete your wedding day.",
+  items: [
+    {
+      title: "Welcome Board",
+      image: specialWorkBlushBackdrop,
+      description: "Soft blush tones and layered florals for an intimate ceremony setting.",
+      type: "Backdrop",
+    },
+    {
+      title: "Serial Lights",
+      image: specialWorkFairyLights,
+      description: "Ambient golden fairy lights to add warmth and sparkle to your venue.",
+      type: "Lighting",
+    },
+    {
+      title: "Shamiyana Tents",
+      image: specialWorkCelebrationCanopy,
+      description: "Grand outdoor canopy draping in rich red and gold for wedding celebrations.",
+      type: "Canopy",
+    },
+    {
+      title: "Arabian Tents",
+      image: specialWorkGardenPavilion,
+      description: "Burgundy and gold pavilion styling for grand outdoor celebrations.",
+      type: "Pavilion",
+    },
+    {
+      title: "Car Decoration",
+      image: specialWorkWeddingSedan,
+      description: "Floral garlands and ribbon styling for the bride and groom’s arrival in style.",
+      type: "Wedding car",
+    },
+    {
+      title: "Doli Pallaku",
+      image: specialWorkBanquetDisplay,
+      description: "Cascade florals and table styling for memorable reception moments.",
+      type: "Banquet",
+    },
+    {
+      title: "Tables and Chairs",
+      image: specialWorkGardenBanquet,
+      description: "Open-air elegance with gold accents and coordinated guest seating.",
+      type: "Banquet",
+    },    
+    {
+      title: "Vaalai Maram",
+      image: specialWorkBananaLeafStage,
+      description: "Tropical banana leaf styling with gold accents and soft draped lighting.",
+      type: "Stage",
     },
   ] as ServiceItem[],
 };
@@ -274,17 +395,17 @@ export const storySection = {
     "We bring together the warmth of our traditions and the elegance of contemporary design to create decorations that reflect your story.",
   ],
   values: [
-    "Personalised designs",
-    "Thoughtful details",
-    "Traditional elegance",
-    "Beautiful floral settings",
+    "Family-run since 2000",
+    "Personalised for every occasion",
+    "Traditional & modern styling",
+    "Trusted across Thanjavur",
   ],
   cta: "Tell us your vision",
 };
 
 // ---------- Testimonials ----------
 export const testimonialsSection = {
-  eyebrow: "KIND WORDS",
+  eyebrow: "REVIEWS",
   title: [
     { text: "Celebrations we were" },
     { text: "honoured to style.", accent: true },
@@ -328,51 +449,6 @@ export const testimonialsSection = {
   }[],
 };
 
-export interface FaqItem {
-  question: string;
-  answer: string;
-}
-
-// ---------- FAQ ----------
-export const faqSection = {
-  eyebrow: "FAQ",
-  title: [{ text: "Questions before" }, { text: "you book.", accent: true }] as TitleLine[],
-  description:
-    "A few things families often ask us about stages, flowers, and planning in Thanjavur.",
-  items: [
-    {
-      question: "How far in advance should we book?",
-      answer:
-        "For weddings and peak season dates, we recommend reaching out at least 4–8 weeks ahead. Smaller functions may be possible with shorter notice — share your date and we’ll let you know.",
-    },
-    {
-      question: "Do you travel outside Thanjavur?",
-      answer:
-        "Yes. We regularly work in Thanjavur and nearby towns. Travel and logistics are discussed when you share your venue.",
-    },
-    {
-      question: "Can we choose colours, flowers, and themes?",
-      answer:
-        "Absolutely. Share photos, colour palettes, or traditions you’d like honoured. We’ll suggest options that fit your venue and budget.",
-    },
-    {
-      question: "How long does setup take?",
-      answer:
-        "It depends on the scale of the decor and venue access. We coordinate arrival times with your hall or family so everything is ready before guests arrive.",
-    },
-    {
-      question: "Do you provide fresh flowers or artificial decor?",
-      answer:
-        "We can work with fresh blooms, mixed arrangements, or reusable elements depending on your occasion, season, and preferences.",
-    },
-    {
-      question: "How can we get in touch?",
-      answer:
-        "Share your date, venue, and ideas by phone, WhatsApp, or email. We’ll follow up to discuss decoration options and next steps.",
-    },
-  ] as FaqItem[],
-};
-
 // ---------- Contact ----------
 export const contactSection = {
   eyebrow: "LET’S CREATE SOMETHING BEAUTIFUL",
@@ -398,7 +474,6 @@ export const footerSection = {
   links: [
     { label: "Gallery", to: appPaths.gallery },
     { label: "About", hash: "about" },
-    { label: "FAQ", hash: "faq" },
     { label: "Get in touch", hash: "contact" },
   ] as NavItem[],
 };

@@ -1,0 +1,28 @@
+@layer base {
+  * {
+    border-color: var(--border);
+    letter-spacing: 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  main [id]:not(#home) {
+    scroll-margin-top: 90px;
+  }
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-manrope);
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-playfair);
+    font-weight: 500;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+}

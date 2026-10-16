@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { CountUp } from "@/components/count-up";
+import { useAnimateWhenInView } from "@/hooks/use-animate-when-in-view";
 import { celebrationStats } from "@/content/site";
-import { canUseMotion } from "@/lib/gsap";
 import { homeSectionIds } from "@/lib/routes";
 
-const COUNT_DURATION_MS = 1800;
 const STAGGER_MS = 120;
 
 type CelebrationStatProps = {
@@ -15,10 +14,6 @@ type CelebrationStatProps = {
   showOnMobile?: boolean;
 };
 
-function easeOutCubic(t: number) {
-  return 1 - Math.pow(1 - t, 3);
-}
-
 function CelebrationStat({
   label,
   value,
@@ -27,41 +22,6 @@ function CelebrationStat({
   run,
   showOnMobile,
 }: CelebrationStatProps) {
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!run) {
-      setDisplay(0);
-      return;
-    }
-
-    if (!canUseMotion()) {
-      setDisplay(value);
-      return;
-    }
-
-    let frame = 0;
-    let startTime: number | null = null;
-    let delayTimer: ReturnType<typeof setTimeout>;
-
-    const tick = (now: number) => {
-      if (startTime === null) startTime = now;
-      const elapsed = now - startTime;
-      const t = Math.min(1, elapsed / COUNT_DURATION_MS);
-      setDisplay(Math.round(value * easeOutCubic(t)));
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-
-    delayTimer = setTimeout(() => {
-      frame = requestAnimationFrame(tick);
-    }, delayMs);
-
-    return () => {
-      clearTimeout(delayTimer);
-      cancelAnimationFrame(frame);
-    };
-  }, [run, value, delayMs]);
-
   return (
     <li
       className={
@@ -71,46 +31,33 @@ function CelebrationStat({
       }
     >
       <p className="celebration-stat-value">
-        <span className="celebration-stat-number">{display}</span>
-        <span className="celebration-stat-suffix">{suffix}</span>
+        <CountUp value={value} suffix={suffix} run={run} delayMs={delayMs} />
       </p>
       <p className="celebration-stat-label">{label}</p>
     </li>
   );
 }
 
-export function CelebrationStatsSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const [animate, setAnimate] = useState(false);
+type CelebrationStatsSectionProps = {
+  /** Renders at the foot of `.hero-viewport` (first screen with the hero). */
+  pinToHeroViewport?: boolean;
+};
 
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    if (!canUseMotion()) {
-      setAnimate(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-        if (!entry?.isIntersecting) return;
-        setAnimate(true);
-        observer.disconnect();
-      },
-      { threshold: 0.25, rootMargin: "0px 0px -8% 0px" },
-    );
-
-    observer.observe(section);
-    return () => observer.disconnect();
-  }, []);
+export function CelebrationStatsSection({
+  pinToHeroViewport = false,
+}: CelebrationStatsSectionProps) {
+  const { ref: sectionRef, animate: inViewAnimate } = useAnimateWhenInView<HTMLElement>();
+  const animate = pinToHeroViewport ? true : inViewAnimate;
 
   return (
     <section
-      ref={sectionRef}
+      ref={pinToHeroViewport ? undefined : sectionRef}
       id={homeSectionIds.stats}
-      className="celebration-stats-section"
+      className={
+        pinToHeroViewport
+          ? "celebration-stats-section celebration-stats-section--hero-viewport"
+          : "celebration-stats-section"
+      }
       aria-label={celebrationStats.ariaLabel}
     >
       <div className="page-width celebration-stats-section__inner">

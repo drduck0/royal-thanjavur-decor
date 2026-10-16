@@ -16,9 +16,10 @@ export const homeSectionIds = {
   stats: "stats",
   services: "services",
   servicesPreview: "services-preview",
+  specialWorks: "special-works",
+  specialWorksPreview: "special-works-preview",
   story: "story",
   testimonials: "testimonials",
-  faq: "faq",
   contact: "contact",
 } as const;
 

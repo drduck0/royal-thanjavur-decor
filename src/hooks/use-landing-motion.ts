@@ -21,8 +21,7 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         .from(".hero .eyebrow", { y: 32, opacity: 0, duration: 1.05 })
         .from(".hero h1", { y: 48, opacity: 0, duration: 1.35 }, "-=0.55")
         .from(".hero-description", { y: 32, opacity: 0, duration: 1.1 }, "-=0.75")
-        .from(".hero-actions > *", { y: 28, opacity: 0, duration: 0.9, stagger: 0.18 }, "-=0.65")
-        .from(".hero-caption", { y: 20, opacity: 0, duration: 0.95 }, "-=0.45");
+        .from(".hero-gallery-cta", { y: 24, opacity: 0, duration: 0.95 }, "-=0.65");
 
       gsap.from(".site-header-1--contact", {
         y: -20,
@@ -37,9 +36,6 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         delay: 0.12,
         ease,
       });
-
-      const aboutSection = root.querySelector(".about-cards");
-      const aboutGrid = aboutSection?.querySelector(".about-grid");
 
       gsap.utils.toArray<HTMLElement>(".motion-section", root).forEach((section) => {
         const heading = section.querySelector(".section-heading");
@@ -58,23 +54,6 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
           });
         }
       });
-
-      if (aboutGrid) {
-        const cards = gsap.utils.toArray<HTMLElement>(".about-card", aboutGrid);
-        gsap.from(cards, {
-          scrollTrigger: {
-            trigger: aboutGrid,
-            start: "top 85%",
-            once: true,
-          },
-          y: 32,
-          opacity: 0,
-          duration: 0.95,
-          stagger: 0.1,
-          ease,
-          clearProps: "transform,opacity",
-        });
-      }
 
       const statsRow = root.querySelector(".celebration-stats");
       if (statsRow) {
@@ -137,19 +116,6 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         opacity: 0,
         duration: 1,
         stagger: 0.16,
-        ease,
-      });
-
-      gsap.from(".faq-item", {
-        scrollTrigger: {
-          trigger: ".faq-accordion",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-        x: -20,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.12,
         ease,
       });
 

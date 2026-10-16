@@ -1,17 +1,15 @@
 import { useLocation } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useLandingMotion } from "@/hooks/use-landing-motion";
+import { CelebrationStatsSection } from "@/components/landing/celebration-stats-section";
 import { SiteFooter } from "@/components";
 import { AboutSection } from "@/components/landing/about-section";
-import { CelebrationStatsSection } from "@/components/landing/celebration-stats-section";
-import { FaqSection } from "@/components/landing/faq-section";
 import { LandingContactSection } from "@/components/landing/landing-contact-section";
 import { LandingHeroViewport } from "@/components/landing/landing-hero-viewport";
-import { ServicePreviewDialog } from "@/components/landing/service-preview-dialog";
 import { ServicesSection } from "@/components/landing/services-section";
+import { SpecialWorksSection } from "@/components/landing/special-works-section";
 import { StorySection } from "@/components/landing/story-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
-import type { ServiceItem } from "@/content/site";
 import { LocalBusinessJsonLd } from "@/components/local-business-json-ld";
 import { appPaths, homeSectionIds } from "@/lib/routes";
 
@@ -19,8 +17,6 @@ export function LandingPage() {
   const mainRef = useRef<HTMLElement>(null);
   const { pathname, hash } = useLocation();
   useLandingMotion(mainRef);
-  const [previewService, setPreviewService] = useState<ServiceItem | null>(null);
-
   useEffect(() => {
     if (pathname !== appPaths.home) return;
     const scrollToPageTop = () =>
@@ -38,14 +34,13 @@ export function LandingPage() {
         <LandingHeroViewport />
         <AboutSection />
         <CelebrationStatsSection />
-        <ServicesSection onPreviewService={setPreviewService} />
-        <StorySection />
+        <ServicesSection />
+        {/* <StorySection /> */}
+        <SpecialWorksSection />
         <TestimonialsSection />
-        <FaqSection />
         <LandingContactSection />
       </main>
       <SiteFooter />
-      <ServicePreviewDialog service={previewService} onClose={() => setPreviewService(null)} />
     </>
   );
 }

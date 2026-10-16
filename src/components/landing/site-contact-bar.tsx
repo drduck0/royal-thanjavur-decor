@@ -6,20 +6,22 @@ export function SiteContactBar() {
     <header className="site-header-1 site-header-1--contact" aria-label="Contact bar">
       <span className="site-header-1__title brand-title">{site.businessName}</span>
       <div className="site-header-1__contact-all">
-        <div className="site-header-1__contact-cluster">
-          <Mail aria-hidden className="site-header-1__icon" />
-          <a className="site-header-1__link" href={`mailto:${contactDetails.email}`}>
-            <span className="site-header-1__link-text">{contactDetails.email}</span>
-          </a>
-        </div>
-        <div className="site-header-1__contact-cluster">
-          <Phone aria-hidden className="site-header-1__icon" />
-          <a className="site-header-1__link" href={contactDetails.phoneHref}>
-            <span className="site-header-1__link-text">{contactDetails.phoneDisplay}</span>
-          </a>
-        </div>
         <a
-          className="site-header-1__link site-header-1__contact-cluster site-header-1__contact-cluster--instagram"
+          className="site-header-1__link site-header-1__contact-cluster"
+          href={`mailto:${contactDetails.email}`}
+        >
+          <Mail aria-hidden className="site-header-1__icon" />
+          <span className="site-header-1__link-text">{contactDetails.email}</span>
+        </a>
+        <a
+          className="site-header-1__link site-header-1__contact-cluster"
+          href={contactDetails.phoneHref}
+        >
+          <Phone aria-hidden className="site-header-1__icon" />
+          <span className="site-header-1__link-text">{contactDetails.phoneDisplay}</span>
+        </a>
+        <a
+          className="site-header-1__link site-header-1__contact-cluster"
           href={contactDetails.instagramHref}
           target="_blank"
           rel="noopener noreferrer"

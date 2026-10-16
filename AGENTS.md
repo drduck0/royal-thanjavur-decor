@@ -10,6 +10,6 @@
 <!-- LOVABLE:END -->
 
 - Keep the Royal Decor landing page at / and its dedicated gallery at /gallery; use in-page navigation only for sections within the landing page.
-- Keep all visual tokens and reusable page styles in src/styles.css so the decoration site stays visually consistent.
+- Keep all visual tokens and reusable page styles in `src/styles.css` (entry) and `src/styles/*.css` partials so the decoration site stays visually consistent.
 - Until real business contact details are provided, enquiries generate a downloadable brief and must never claim to have been sent.
 - Keep all page copy, cards, links, images and form labels as plain objects in src/content/site.ts; page components only render from those objects so content can be replaced in one place.

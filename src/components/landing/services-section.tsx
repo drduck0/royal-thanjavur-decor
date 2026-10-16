@@ -1,22 +1,25 @@
+import { useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
-import { servicesSection, type ServiceItem } from "@/content/site";
+import { servicesSection } from "@/content/site";
 import { SectionIntro } from "@/components/layout/section-intro";
+import { useSpecialiseCardHover } from "@/hooks/use-specialise-card-hover";
 import { appPaths, homeSectionIds } from "@/lib/routes";
 import { SiteImage } from "@/components/site-image";
 import { Button } from "@/components/ui/button";
 
-type ServicesSectionProps = {
-  onPreviewService: (service: ServiceItem) => void;
-};
+export function ServicesSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSpecialiseCardHover(sectionRef);
 
-export function ServicesSection({ onPreviewService }: ServicesSectionProps) {
   return (
     <section
+      ref={sectionRef}
       id={homeSectionIds.services}
-      className="motion-section section page-width"
-      aria-labelledby="services-title"
+      className="services-section motion-section section"
+      aria-label={servicesSection.eyebrow}
     >
+      <div className="page-width">
       <SectionIntro
         eyebrow={servicesSection.eyebrow}
         title={servicesSection.title}
@@ -27,17 +30,11 @@ export function ServicesSection({ onPreviewService }: ServicesSectionProps) {
         id={homeSectionIds.servicesPreview}
         className="service-grid"
         role="list"
-        aria-label="Decoration specialities"
+        aria-label="What we specialise in"
       >
-        {servicesSection.items.map((service, index) => (
+        {servicesSection.items.map((service) => (
           <article className="service" key={service.title} role="listitem">
-            <Button
-              type="button"
-              variant="ghost"
-              className="service-image service-image-button h-auto w-full p-0"
-              aria-label={`View ${service.title}`}
-              onClick={() => onPreviewService(service)}
-            >
+            <div className="service-image">
               <SiteImage
                 src={service.image}
                 alt={`${service.title} — design inspiration`}
@@ -45,31 +42,24 @@ export function ServicesSection({ onPreviewService }: ServicesSectionProps) {
                 height={1024}
                 sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw"
               />
-              <span className="image-index">0{index + 1}</span>
-            </Button>
-            <div className="service-title">
-              <h3>{service.title}</h3>
-              <Button
-                variant="ghost"
-                size="icon"
-                aria-label={`View ${service.title}`}
-                title={`View ${service.title}`}
-                onClick={() => onPreviewService(service)}
-              >
-                <ArrowUpRight />
-              </Button>
+              <span className="card-media-overlay" aria-hidden />
             </div>
-            <p>{service.description}</p>
+            <div className="service-card-body">
+              <h3 className="service-title">{service.title}</h3>
+              <p className="service-description">{service.description}</p>
+            </div>
           </article>
         ))}
       </div>
-      <div className="mt-7 flex items-center justify-between gap-4">
-        <p className="text-[10px] text-muted-foreground">{servicesSection.footnote}</p>
-        <Button variant="outline" asChild>
+      <div className="services-section__footer">
+        <p className="services-section__footnote">{servicesSection.footnote}</p>
+        <Button variant="outline" asChild className="services-section__gallery-cta h-11 px-6 text-xs">
           <Link to={appPaths.gallery}>
-            {servicesSection.galleryCta} <ArrowUpRight />
+            {servicesSection.galleryCta}
+            <ArrowUpRight aria-hidden />
           </Link>
         </Button>
+      </div>
       </div>
     </section>
   );

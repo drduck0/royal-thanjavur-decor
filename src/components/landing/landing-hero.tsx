@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { hero } from "@/content/site";
 import { HeadlineLines } from "@/components/headline-lines";
 import { SiteImage } from "@/components/site-image";
-import { appPaths } from "@/lib/routes";
 import { Button } from "@/components/ui/button";
+import { appPaths } from "@/lib/routes";
 
 export function LandingHero() {
   return (
@@ -13,8 +13,8 @@ export function LandingHero() {
         src={hero.image.src}
         className="hero-photo"
         alt={hero.image.alt}
-        width={1920}
-        height={1088}
+        width={1024}
+        height={580}
         priority
         sizes="100vw"
       />
@@ -24,20 +24,13 @@ export function LandingHero() {
           <HeadlineLines lines={hero.title} />
         </h1>
         <p className="hero-description">{hero.description}</p>
-        {/* <div className="hero-actions">
-          <Button variant="gold" type="button" className="h-12 px-6 text-xs">
-            {hero.primaryCta} <ArrowUpRight />
-          </Button>
-          <Button variant="heroOutline" asChild className="h-12 px-6 text-xs">
-            <Link to={appPaths.gallery}>
-              {hero.secondaryCta} <ArrowUpRight />
-            </Link>
-          </Button>
-        </div> */}
+        <Button variant="gold" asChild className="hero-gallery-cta h-11 px-6 text-xs">
+          <Link to={appPaths.gallery}>
+            {hero.galleryCta}
+            <ArrowUpRight aria-hidden />
+          </Link>
+        </Button>
       </div>
-      <p className="hero-caption" aria-label={hero.caption}>
-        <MapPin size={13} aria-hidden /> {hero.caption}
-      </p>
     </section>
   );
 }

@@ -1,5 +1,5 @@
 import type { LinkHTMLAttributes } from "react";
-import stagePhoto from "@/assets/royal-wedding-stage.jpg";
+import stagePhoto from "@/assets/gallery/royal-wedding-stage.jpg";
 import { site, siteSeo } from "@/content/site";
 
 type PageSeoInput = {

@@ -1,15 +1,35 @@
+import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
-import { contactDetails, footerSection, site } from "@/content/site";
-import { SiteBrand } from "@/components/site-brand";
+import { contactDetails, footerSection, site, siteImages } from "@/content/site";
+import { SiteImage } from "@/components/site-image";
 import { SiteNavLink } from "@/components/site-nav-link";
 import { WhatsappIcon } from "@/components/whatsapp-icon";
+import { appPaths, homeSectionIds } from "@/lib/routes";
 
 export function SiteFooter() {
   return (
     <footer className="site-footer" aria-label="Site footer">
       <div className="site-footer__main page-width">
         <div className="site-footer__brand">
-          <SiteBrand />
+          <Link
+            to={appPaths.home}
+            hash={homeSectionIds.home}
+            className="site-footer__brand-link brand"
+            aria-label={siteImages.logoAlt}
+          >
+            <SiteImage
+              className="site-footer__logo"
+              src={siteImages.logo}
+              alt=""
+              width={82}
+              height={89}
+              loading="lazy"
+            />
+            <span>
+              <span className="brand-title">{site.brandName}</span>
+              <span className="brand-location">{site.location}</span>
+            </span>
+          </Link>
           <p className="site-footer__tagline">{site.tagline}</p>
         </div>
 
@@ -87,7 +107,7 @@ export function SiteFooter() {
         </p>
         <nav className="footer-links" aria-label="Footer navigation">
           {footerSection.links.map((item) => (
-            <SiteNavLink key={item.label} item={item} />
+            <SiteNavLink key={item.label} item={item} className="site-footer__nav-link" />
           ))}
         </nav>
       </div>

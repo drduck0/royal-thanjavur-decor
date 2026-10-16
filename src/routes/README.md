@@ -10,7 +10,7 @@ defines a top-level URL. Do **not** create `src/pages/` or Next.js-style layouts
 | `/` | `index.tsx` | Single-page **landing** — sections use `#hash` ids (see `homeSectionIds` in `src/lib/routes.ts`) |
 | `/gallery` | `gallery.tsx` | Second **full page** — gallery grid and lightbox |
 
-- **In-page only on `/`:** About, services, FAQ, contact, etc. (`navigation` / `footerSection` hashes in `src/content/site.ts`).
+- **In-page only on `/`:** About, services, contact, etc. (`navigation` / `footerSection` hashes in `src/content/site.ts`).
 - **Separate routes:** Add `src/routes/<name>.tsx` → `/<name>`, register path in `appPaths` (`src/lib/routes.ts`), and add a `to` entry in `navigation` if it belongs in the header.
 
 Shared chrome: `SiteBrand`, `SiteNavLink` (`src/components/`).  

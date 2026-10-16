@@ -1,5 +1,13 @@
 import type { TitleLine } from "@/content/site";
 import { HeadlineLines } from "@/components/headline-lines";
+import { cn } from "@/lib/utils";
+
+/** Left-aligned section label: gold rule before, uppercase (About, Specialise, Reviews, etc.). */
+export const sectionEyebrowClassName = "eyebrow eyebrow--section text-foreground";
+
+/** Playfair, centered, gold rule below (e.g. special works). */
+export const centeredSectionEyebrowClassName =
+  "eyebrow eyebrow--centered text-primary text-3xl";
 
 type SectionIntroProps = {
   eyebrow: string;
@@ -7,6 +15,8 @@ type SectionIntroProps = {
   description: string;
   titleId: string;
   eyebrowClassName?: string;
+  titleCountRun?: boolean;
+  centeredEyebrow?: boolean;
 };
 
 export function SectionIntro({
@@ -14,17 +24,25 @@ export function SectionIntro({
   title,
   description,
   titleId,
-  eyebrowClassName = "eyebrow text-primary text-3xl",
+  eyebrowClassName,
+  titleCountRun = false,
+  centeredEyebrow = false,
 }: SectionIntroProps) {
+  const eyebrowClass =
+    eyebrowClassName ??
+    (centeredEyebrow ? centeredSectionEyebrowClassName : sectionEyebrowClassName);
+
   return (
-    <div className="section-heading">
+    <div className={cn("section-heading", centeredEyebrow && "section-heading--centered")}>
       <div>
-        <p className={eyebrowClassName}>{eyebrow}</p>
-        <h2 id={titleId}>
-          <HeadlineLines lines={title} />
-        </h2>
+        <p className={eyebrowClass}>{eyebrow}</p>
+        {title.length > 0 ? (
+          <h2 id={titleId}>
+            <HeadlineLines lines={title} countRun={titleCountRun} />
+          </h2>
+        ) : null}
       </div>
-      <p>{description}</p>
+      {description ? <p>{description}</p> : null}
     </div>
   );
 }

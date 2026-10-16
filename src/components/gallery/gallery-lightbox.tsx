@@ -31,7 +31,7 @@ export function GalleryLightbox({
     >
       <SiteDialogContent className="sm:max-w-3xl">
         <DialogHeader>
-          <DialogTitle className="font-display text-2xl">{design?.title}</DialogTitle>
+          <DialogTitle className="font-playfair text-2xl">{design?.title}</DialogTitle>
           <DialogDescription>
             {design?.category} · Illustrative decoration inspiration
           </DialogDescription>
