@@ -9,12 +9,13 @@ export function SiteContactBar() {
         <a
           className="site-header-1__link site-header-1__contact-cluster"
           href={`mailto:${contactDetails.email}`}
+          aria-label={`Email ${contactDetails.email}`}
         >
           <Mail aria-hidden className="site-header-1__icon" />
           <span className="site-header-1__link-text">{contactDetails.email}</span>
         </a>
         <a
-          className="site-header-1__link site-header-1__contact-cluster"
+          className="site-header-1__link site-header-1__contact-cluster site-header-1__contact-cluster--show-text-mobile"
           href={contactDetails.phoneHref}
         >
           <Phone aria-hidden className="site-header-1__icon" />

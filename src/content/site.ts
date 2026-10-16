@@ -96,7 +96,7 @@ export const navigation: NavItem[] = [
   { label: "Home", hash: "home" },
   { label: "About Us", hash: "about" },
   { label: "Gallery", to: appPaths.gallery },
-  { label: "Review", hash: "testimonials" },
+  { label: "Reviews", hash: "testimonials" },
 ];
 
 // ---------- Contact details (header, contact section, links) ----------
@@ -464,7 +464,6 @@ export const contactSection = {
 export const siteHeader = {
   primaryCta: contactSection.cta,
   primaryCtaShort: "Plan event",
-  galleryCtaShort: "Contact",
 };
 
 // ---------- Footer ----------

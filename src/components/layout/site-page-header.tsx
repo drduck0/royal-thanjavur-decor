@@ -45,22 +45,22 @@ export function SitePageHeader({ variant }: SitePageHeaderProps) {
           <Button
             variant="royal"
             type="button"
-            className="site-header__cta h-11 px-5 text-xs max-sm:h-9 max-sm:px-3 max-sm:text-[10px]"
+            className="site-header__cta h-11 px-5 text-xs max-sm:h-7 max-sm:min-h-7 max-sm:px-2 max-sm:py-1 max-sm:text-[8px]"
           >
             <span className="max-sm:hidden">{siteHeader.primaryCta}</span>
             <span className="hidden max-sm:inline">{siteHeader.primaryCtaShort}</span>
-            <ArrowUpRight className="max-sm:size-3.5" />
+            <ArrowUpRight className="max-sm:size-3" />
           </Button>
         ) : (
           <Button
             variant="royal"
             asChild
-            className="site-header__cta h-11 px-5 text-xs max-sm:h-9 max-sm:px-3 max-sm:text-[10px]"
+            className="site-header__cta h-11 px-5 text-xs max-sm:h-7 max-sm:min-h-7 max-sm:px-2 max-sm:py-1 max-sm:text-[8px]"
           >
             <Link to={appPaths.home} hash={homeSectionIds.contact}>
               <span className="max-sm:hidden">{siteHeader.primaryCta}</span>
-              <span className="hidden max-sm:inline">{siteHeader.galleryCtaShort}</span>
-              <ArrowUpRight className="max-sm:size-3.5" />
+              <span className="hidden max-sm:inline">{siteHeader.primaryCtaShort}</span>
+              <ArrowUpRight className="max-sm:size-3" />
             </Link>
           </Button>
         )}
