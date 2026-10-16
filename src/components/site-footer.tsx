@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 import { contactDetails, footerSection, site, siteImages } from "@/content/site";
 import { SiteImage } from "@/components/site-image";
-import { SiteNavLink } from "@/components/site-nav-link";
 import { WhatsappIcon } from "@/components/whatsapp-icon";
 import { appPaths, homeSectionIds } from "@/lib/routes";
 
@@ -69,11 +68,12 @@ export function SiteFooter() {
             <li>
               <MapPin aria-hidden className="site-footer__icon" />
               <span>
-                {contactDetails.addressLines.join(", ")}
-                <br />
-                <span className="site-footer__muted">
-                  {contactDetails.serviceAreaLabel}: {contactDetails.serviceArea}
-                </span>
+                {contactDetails.addressLines.map((line, index) => (
+                  <span key={line}>
+                    {index > 0 ? <br /> : null}
+                    {line}
+                  </span>
+                ))}
               </span>
             </li>
           </ul>
@@ -105,11 +105,6 @@ export function SiteFooter() {
         <p className="site-footer__copy">
           © {new Date().getFullYear()} {site.businessName}. All rights reserved.
         </p>
-        <nav className="footer-links" aria-label="Footer navigation">
-          {footerSection.links.map((item) => (
-            <SiteNavLink key={item.label} item={item} className="site-footer__nav-link" />
-          ))}
-        </nav>
       </div>
     </footer>
   );

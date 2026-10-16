@@ -20,23 +20,19 @@ export function useSpecialiseCardHover(sectionRef: RefObject<HTMLElement | null>
 
     cards.forEach((card) => {
       const image = card.querySelector<HTMLElement>(".service-image img");
-      const overlay = card.querySelector<HTMLElement>(".card-media-overlay");
-      if (!image || !overlay) return;
+      if (!image) return;
 
       const scaleTo = gsap.quickTo(image, "scale", { duration: 0.55, ease: hoverEase });
-      const overlayTo = gsap.quickTo(overlay, "opacity", { duration: 0.45, ease: hoverEase });
       const liftTo = gsap.quickTo(card, "y", { duration: 0.45, ease: hoverEase });
 
       gsap.set(image, { transformOrigin: "center center", force3D: true });
 
       const onEnter = () => {
         scaleTo(1.07);
-        overlayTo(0.25);
         liftTo(-6);
       };
       const onLeave = () => {
         scaleTo(1);
-        overlayTo(1);
         liftTo(0);
       };
 
@@ -54,12 +50,9 @@ export function useSpecialiseCardHover(sectionRef: RefObject<HTMLElement | null>
       cards.forEach((card) => {
         gsap.killTweensOf(card);
         const image = card.querySelector(".service-image img");
-        const overlay = card.querySelector(".card-media-overlay");
         if (image) gsap.killTweensOf(image);
-        if (overlay) gsap.killTweensOf(overlay);
         gsap.set(card, { clearProps: "transform" });
         if (image) gsap.set(image, { clearProps: "transform" });
-        if (overlay) gsap.set(overlay, { clearProps: "opacity" });
       });
     };
   }, [sectionRef]);

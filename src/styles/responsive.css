@@ -273,11 +273,7 @@
     aspect-ratio: 16 / 11;
   }
   .site-footer__bar {
-    flex-direction: column;
     text-align: center;
-  }
-  .footer-links {
-    justify-content: center;
   }
   .gallery-intro {
     padding-block: 42px;

@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
 import { useRef, useState } from "react";
 import { useGalleryMotion } from "@/hooks/use-gallery-motion";
 import { SiteFooter } from "@/components";
@@ -7,7 +6,7 @@ import { SitePageHeader } from "@/components/layout/site-page-header";
 import { ContactCtaSection } from "@/components/layout/contact-cta-section";
 import { HeadlineLines } from "@/components/headline-lines";
 import { galleryContact, gallerySection } from "@/content/site";
-import { appPaths, homeSectionIds } from "@/lib/routes";
+import { PlanEventCtaButton } from "@/components/plan-event-cta-button";
 import { Button } from "@/components/ui/button";
 import { GalleryGrid } from "./gallery-grid";
 import { GalleryLightbox } from "./gallery-lightbox";
@@ -54,20 +53,13 @@ export function GalleryPage() {
             ))}
           </div>
           <GalleryGrid designs={visible} onSelect={setSelected} />
-          <p className="pb-10 text-xs text-muted-foreground">{gallerySection.footnote}</p>
         </section>
         <ContactCtaSection
           eyebrow={galleryContact.eyebrow}
           title={galleryContact.title}
           description={galleryContact.description}
           titleId="gallery-contact-title"
-          actions={
-            <Button variant="gold" asChild className="h-12 px-7 text-xs">
-              <Link to={appPaths.home} hash={homeSectionIds.contact}>
-                {galleryContact.cta} <ArrowUpRight />
-              </Link>
-            </Button>
-          }
+          actions={<PlanEventCtaButton className="h-12 px-7 text-xs" />}
         />
       </main>
       <SiteFooter />

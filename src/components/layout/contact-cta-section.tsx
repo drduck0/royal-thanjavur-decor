@@ -20,7 +20,7 @@ export function ContactCtaSection({
   actions,
 }: ContactCtaSectionProps) {
   return (
-    <section id={id} className="contact" aria-labelledby={titleId}>
+    <section id={id} className="contact mt-12" aria-labelledby={titleId}>
       <div className="page-width">
         <p className="eyebrow">{eyebrow}</p>
         <h2 id={titleId}>

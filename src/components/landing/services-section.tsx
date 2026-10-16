@@ -42,7 +42,6 @@ export function ServicesSection() {
                 height={1024}
                 sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw"
               />
-              <span className="card-media-overlay" aria-hidden />
             </div>
             <div className="service-card-body">
               <h3 className="service-title">{service.title}</h3>
@@ -52,7 +51,6 @@ export function ServicesSection() {
         ))}
       </div>
       <div className="services-section__footer">
-        <p className="services-section__footnote">{servicesSection.footnote}</p>
         <Button variant="outline" asChild className="services-section__gallery-cta h-11 px-6 text-xs">
           <Link to={appPaths.gallery}>
             {servicesSection.galleryCta}

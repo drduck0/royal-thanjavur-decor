@@ -1,10 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
-import { navigation, siteHeader, siteImages } from "@/content/site";
+import { navigation, siteImages } from "@/content/site";
 import { SiteImage } from "@/components/site-image";
 import { SiteNavLink } from "@/components/site-nav-link";
+import { PlanEventCtaButton } from "@/components/plan-event-cta-button";
 import { appPaths, homeSectionIds } from "@/lib/routes";
-import { Button } from "@/components/ui/button";
 import { SiteContactBar } from "@/components/landing/site-contact-bar";
 
 type SitePageHeaderProps = {
@@ -41,29 +40,11 @@ export function SitePageHeader({ variant }: SitePageHeaderProps) {
         ))}
       </nav>
       <div className="site-page-header__actions">
-        {variant === "landing" ? (
-          <Button
-            variant="royal"
-            type="button"
-            className="site-header__cta h-11 px-5 text-xs max-sm:h-7 max-sm:min-h-7 max-sm:px-2 max-sm:py-1 max-sm:text-[8px]"
-          >
-            <span className="max-sm:hidden">{siteHeader.primaryCta}</span>
-            <span className="hidden max-sm:inline">{siteHeader.primaryCtaShort}</span>
-            <ArrowUpRight className="max-sm:size-3" />
-          </Button>
-        ) : (
-          <Button
-            variant="royal"
-            asChild
-            className="site-header__cta h-11 px-5 text-xs max-sm:h-7 max-sm:min-h-7 max-sm:px-2 max-sm:py-1 max-sm:text-[8px]"
-          >
-            <Link to={appPaths.home} hash={homeSectionIds.contact}>
-              <span className="max-sm:hidden">{siteHeader.primaryCta}</span>
-              <span className="hidden max-sm:inline">{siteHeader.primaryCtaShort}</span>
-              <ArrowUpRight className="max-sm:size-3" />
-            </Link>
-          </Button>
-        )}
+        <PlanEventCtaButton
+          variant="royal"
+          compactOnMobile
+          className="site-header__cta h-11 px-5 text-xs max-sm:h-7 max-sm:min-h-7 max-sm:px-2 max-sm:py-1 max-sm:text-[8px]"
+        />
       </div>
     </>
   );

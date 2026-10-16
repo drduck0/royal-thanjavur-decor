@@ -35,7 +35,6 @@ export function LandingPage() {
         <AboutSection />
         <CelebrationStatsSection />
         <ServicesSection />
-        {/* <StorySection /> */}
         <SpecialWorksSection />
         <TestimonialsSection />
         <LandingContactSection />

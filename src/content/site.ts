@@ -1,6 +1,5 @@
 import brandLogo from "@/assets/brand/logos.png";
 import heroStagePhoto from "@/assets/hero/hero-wedding-stage.jpg";
-import stagePhoto from "@/assets/gallery/royal-wedding-stage.jpg";
 import weddingStageDecorPhoto from "@/assets/specialise/wedding-stage.png";
 import birthdayEventPhoto from "@/assets/specialise/birthday-stage.png";
 import pubertyEventPhoto from "@/assets/specialise/puberty-stage.png";
@@ -16,8 +15,15 @@ import specialWorkFairyLights from "@/assets/special-works/fairy-lights.png";
 import specialWorkBananaLeafStage from "@/assets/special-works/banana-leaf-stage.png";
 import specialWorkWeddingSedan from "@/assets/special-works/wedding-sedan.png";
 import { appPaths } from "@/lib/routes";
-import receptionPhoto from "@/assets/gallery/reception-decor.jpg";
 import traditionalPhoto from "@/assets/gallery/traditional-decor.jpg";
+import galleryVintageSofaStage from "@/assets/gallery/gallery-vintage-sofa-stage.jpg";
+import galleryBlueFloralArches from "@/assets/gallery/gallery-blue-floral-arches.jpg";
+import galleryCeremonyThrone from "@/assets/gallery/gallery-ceremony-throne.jpg";
+import galleryTealMarbleStage from "@/assets/gallery/gallery-teal-marble-stage.jpg";
+import galleryWhiteGoldStage from "@/assets/gallery/gallery-white-gold-stage.jpg";
+import galleryBirthdayArjunKrishna from "@/assets/gallery/gallery-birthday-arjun-krishna.jpg";
+import galleryPurpleFloralStage from "@/assets/gallery/gallery-purple-floral-stage.jpg";
+import galleryTealButterflyStage from "@/assets/gallery/gallery-teal-butterfly-stage.jpg";
 import {
   CalendarDays,
   Cake,
@@ -103,6 +109,10 @@ export const navigation: NavItem[] = [
 const whatsappNumber = "918754615441";
 const whatsappMessage = "Hi Royal Decor Thanjavur, I'd like to discuss event decor.";
 
+/** Royal Decor — Google Maps place pin. */
+const mapLatitude = 10.7497048;
+const mapLongitude = 79.1211208;
+
 export const contactDetails = {
   email: "royaldecorthanjavur@gmail.com",
   phoneDisplay: "+91 87546 15441",
@@ -118,11 +128,17 @@ export const contactDetails = {
   serviceAreaLabel: "Service area",
   serviceArea: "Thanjavur and nearby towns — including Kumbakonam, Mannargudi, and Ariyalur.",
   responseTime: "We aim to reply within one business day.",
-  addressLines: ["Thanjavur", "Tamil Nadu, India"],
+  addressLines: [
+    "Sundaram Complex, 2nd St, Vairam Nagar (near Trends)",
+    "Natarajan Nagar, New Housing Unit, Thanjavur, Tamil Nadu 613005",
+  ],
   mapsLabel: "Open in Google Maps",
-  mapsHref: "https://www.google.com/maps/search/?api=1&query=Royal+Decor+Thanjavur+Tamil+Nadu",
+  mapsHref:
+    "https://www.google.com/maps/place/Royal+Decor+Thanjavur/@10.7497048,79.1211208,17z/data=!4m6!3m5!1s0x3baab937fd4b1131:0xe872ece24eb7bcff!8m2!3d10.7497048!4d79.1211208",
   mapEmbedSrc:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39158.884!2d79.1374!3d10.787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba861853031f8c9%3A0x9a0fff5dd3c33e6!2sThanjavur%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin",
+    "https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s10.7497048,79.1211208!6i17!3m1!1sen!5m1!1sen",
+  mapLatitude,
+  mapLongitude,
 };
 
 export const localBusinessJsonLd = {
@@ -137,9 +153,17 @@ export const localBusinessJsonLd = {
   areaServed: contactDetails.serviceArea,
   address: {
     "@type": "PostalAddress",
+    streetAddress:
+      "Sundaram Complex, 2nd St, Vairam Nagar, Natarajan Nagar, New Housing Unit",
     addressLocality: "Thanjavur",
     addressRegion: "Tamil Nadu",
+    postalCode: "613005",
     addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: mapLatitude,
+    longitude: mapLongitude,
   },
 };
 
@@ -270,7 +294,6 @@ export const servicesSection = {
   ] as TitleLine[],
   description:
     "From wedding stages to intimate family functions, we design decor that reflects your story and elevates every moment.",
-  footnote: "Decoration inspiration · Illustrative images",
   galleryCta: "Visit the gallery",
   items: [
     {
@@ -316,6 +339,15 @@ export const servicesSection = {
       type: "Engagement",
     },
   ] as ServiceItem[],
+};
+
+const specialiseGalleryCategory: Record<ServiceItem["type"], string> = {
+  Wedding: "Wedding stages",
+  Birthday: "Birthday celebrations",
+  "House warming": "Traditional functions",
+  Puberty: "Traditional functions",
+  "Baby shower": "Receptions",
+  Engagement: "Wedding stages",
 };
 
 // ---------- Special works ----------
@@ -421,24 +453,24 @@ export const testimonialsSection = {
     },
     {
       quote:
-        "They listened to our colours and budget, and still made the mandap feel grand. Setup was calm and on time.",
-      name: "Lakshmi family",
-      occasion: "Traditional function",
-      rating: 4.5,
+        "They worked on our baby shower within our budget while still delivering a gorgeous, high-quality setup. The theme came together beautifully, and the team made the whole process completely hassle-free. Thank you for making our day so memorable!",
+      name: "Umesh Kumar",
+      occasion: "Baby shower",
+      rating: 5,
     },
     {
       quote:
-        "From the first call to the final touch, the team was patient and creative. The reception backdrop was picture-perfect.",
-      name: "Divya & Karthik",
-      occasion: "Wedding stage",
-      rating: 4.8,
+        "He delivered exactly what he promised from day one, and all of it within a very reasonable budget. Highly satisfied with his work! Thank you Ramesh anna and royal decors ❤️",
+      name: "Vin Ronald",
+      occasion: "Wedding and engagement",
+      rating: 5,
     },
     {
       quote:
-        "We booked them for an engagement at home. Beautiful florals, neat finishing, and they left the space tidy.",
-      name: "Meena",
-      occasion: "Engagement",
-      rating: 4.1,
+        "Excellent decoration service in Thanjavur! Beautiful wedding stage decorations, creative designs, professional service, and budget-friendly packages. Highly recommended for weddings and all special occasions.",
+      name: "Veeramani",
+      occasion: "Wedding",
+      rating: 5,
     },
   ] as {
     quote: string
@@ -470,11 +502,6 @@ export const siteHeader = {
 export const footerSection = {
   contactHeading: "Contact",
   mapHeading: "Location",
-  links: [
-    { label: "Gallery", to: appPaths.gallery },
-    { label: "About", hash: "about" },
-    { label: "Get in touch", hash: "contact" },
-  ] as NavItem[],
 };
 
 // ---------- Gallery page ----------
@@ -487,27 +514,67 @@ export const gallerySection = {
   description:
     "Discover a world of flowers, colour and celebration. Find the little details that speak to your big day.",
   allLabel: "All decorations",
-  categories: ["Wedding stages", "Receptions", "Traditional functions"],
-  footnote: "Decoration inspiration · Illustrative images",
+  categories: [
+    "Wedding stages",
+    "Receptions",
+    "Traditional functions",
+    "Birthday celebrations",
+  ],
   designs: [
     {
-      title: "The royal floral stage",
+      title: "Vintage sofa stage",
       category: "Wedding stages",
-      image: stagePhoto,
-      alt: "Gold arches with jasmine and roses framing an ivory wedding sofa",
+      image: galleryVintageSofaStage,
+      alt: "Wedding stage with carved vintage sofa, white drapes and purple florals",
     },
     {
-      title: "A celebration in bloom",
-      category: "Receptions",
-      image: receptionPhoto,
-      alt: "Pastel pink floral arches and an elegant reception stage",
+      title: "Blue floral arch backdrop",
+      category: "Wedding stages",
+      image: galleryBlueFloralArches,
+      alt: "Blue textured backdrop with white floral arches and mustard seating",
     },
     {
-      title: "Tradition, beautifully adorned",
+      title: "Ceremony throne backdrop",
       category: "Traditional functions",
-      image: traditionalPhoto,
-      alt: "Traditional mandap with marigolds, banana leaves and brass lamps",
+      image: galleryCeremonyThrone,
+      alt: "Traditional ceremony stage with throne chair, garlands and cow motifs",
     },
+    {
+      title: "Teal marble ring stage",
+      category: "Wedding stages",
+      image: galleryTealMarbleStage,
+      alt: "Teal marble backdrop with illuminated rings, florals and teal sofa",
+    },
+    {
+      title: "White and gold floral stage",
+      category: "Wedding stages",
+      image: galleryWhiteGoldStage,
+      alt: "White and gold wedding stage with backlit arches and floral aisle",
+    },
+    {
+      title: "Peacock-themed first birthday",
+      category: "Birthday celebrations",
+      image: galleryBirthdayArjunKrishna,
+      alt: "Blue and white first birthday stage with peacock balloons and Krishna theme",
+    },
+    {
+      title: "Purple floral mandap stage",
+      category: "Traditional functions",
+      image: galleryPurpleFloralStage,
+      alt: "Purple and white floral stage with ornate chair and banana leaf accents",
+    },
+    {
+      title: "Teal butterfly stage",
+      category: "Receptions",
+      image: galleryTealButterflyStage,
+      alt: "Teal draped reception stage with floral rings and butterfly lights",
+    },
+    ...servicesSection.items.map((item) => ({
+      title: item.title,
+      category: specialiseGalleryCategory[item.type],
+      image: item.image,
+      alt: item.description,
+    })),
   ] as GalleryDesign[],
 };
 
@@ -516,6 +583,5 @@ export const galleryContact = {
   title: [{ text: "Found your inspiration?" }] as TitleLine[],
   description:
     "Let’s make it personal. Bring your ideas and we’ll help imagine a beautiful setting for your celebration.",
-  cta: "Plan your celebration",
 };
 

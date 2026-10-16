@@ -119,19 +119,6 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         ease,
       });
 
-      gsap.from(".contact .page-width > *", {
-        scrollTrigger: {
-          trigger: ".contact",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.14,
-        ease,
-      });
-
       gsap.to(".hero-photo", {
         yPercent: 8,
         ease: "none",

@@ -1,8 +1,7 @@
-import { ArrowUpRight } from "lucide-react";
 import { contactSection } from "@/content/site";
 import { ContactCtaSection } from "@/components/layout/contact-cta-section";
+import { PlanEventCtaButton } from "@/components/plan-event-cta-button";
 import { homeSectionIds } from "@/lib/routes";
-import { Button } from "@/components/ui/button";
 
 export function LandingContactSection() {
   return (
@@ -11,11 +10,7 @@ export function LandingContactSection() {
       eyebrow={contactSection.eyebrow}
       title={contactSection.title}
       description={contactSection.description}
-      actions={
-        <Button variant="gold" type="button" className="h-12 px-7 text-xs">
-          {contactSection.cta} <ArrowUpRight />
-        </Button>
-      }
+      actions={<PlanEventCtaButton className="h-12 px-7 text-xs" />}
     />
   );
 }

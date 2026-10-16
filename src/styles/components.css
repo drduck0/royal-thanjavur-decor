@@ -195,6 +195,15 @@
     line-height: 1.9;
     opacity: 0.86;
   }
+  .plan-event-cta {
+    border-radius: 10px;
+    font-family: var(--font-dm-serif);
+    font-weight: 400;
+    text-transform: capitalize;
+  }
+  .site-page-header .plan-event-cta svg {
+    color: var(--header-cta-accent);
+  }
   .hero-gallery-cta {
     margin-top: 22px;
     border-radius: 10px;
@@ -400,13 +409,6 @@
     border-radius: 12px;
     pointer-events: none;
   }
-  .services-section .service-image {
-    background: oklch(0.72 0.01 75);
-  }
-  .services-section .card-media-overlay {
-    background: oklch(0.32 0.02 75 / 32%);
-    opacity: 1;
-  }
   .services-section .service {
     cursor: default;
   }
@@ -414,17 +416,11 @@
     .services-section:not(.services-section--gsap-hover) .service-image img {
       transition: transform 0.55s ease;
     }
-    .services-section:not(.services-section--gsap-hover) .card-media-overlay {
-      transition: opacity 0.45s ease;
-    }
     .services-section:not(.services-section--gsap-hover) .service {
       transition: transform 0.45s ease;
     }
     .services-section:not(.services-section--gsap-hover) .service:hover .service-image img {
       transform: scale(1.07);
-    }
-    .services-section:not(.services-section--gsap-hover) .service:hover .card-media-overlay {
-      opacity: 0.25;
     }
     .services-section:not(.services-section--gsap-hover) .service:hover {
       transform: translateY(-6px);
@@ -458,14 +454,9 @@
   .services-section__footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 24px;
     margin-top: 40px;
-  }
-  .services-section__footnote {
-    margin: 0;
-    font-size: 11px;
-    color: var(--muted-foreground);
   }
   .services-section__gallery-cta {
     font-family: var(--font-dm-serif);
@@ -647,6 +638,21 @@
     flex-direction: column;
     gap: 18px;
     min-height: 100%;
+    transition:
+      border-color 0.35s ease,
+      box-shadow 0.35s ease,
+      transform 0.35s ease;
+  }
+  @media (hover: hover) {
+    .testimonial-card:hover {
+      border-color: oklch(0.72 0.08 75 / 55%);
+      box-shadow: 0 22px 40px -34px oklch(0.235385823 0.087017151 29.1435954 / 38%);
+    }
+  }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+    }
   }
   .testimonial-stars {
     display: flex;
@@ -697,10 +703,10 @@
     margin-top: auto;
   }
   .testimonial-name {
-    font-family: var(--font-playfair);
+    font-family: var(--font-dm-serif);
     font-size: 18px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
   }
   .testimonial-occasion {
     font-size: 11px;
@@ -726,12 +732,8 @@
     line-height: 1.8;
   }
   .site-footer {
-    border-top: 1px solid var(--border);
-    background: linear-gradient(
-      180deg,
-      oklch(0.988 0.004 78 / 100%) 0%,
-      var(--background) 42%
-    );
+    background: var(--primary);
+    color: var(--primary-foreground);
     margin-top: 0;
   }
   .site-footer__main {
@@ -746,12 +748,13 @@
     max-width: 32ch;
     font-size: 13px;
     line-height: 1.75;
-    color: var(--muted-foreground);
+    color: var(--primary-foreground);
+    opacity: 0.82;
   }
   .site-footer__brand-link {
     align-items: center;
     gap: 12px;
-    color: var(--primary);
+    color: var(--primary-foreground);
   }
   .site-footer__logo {
     display: block;
@@ -773,7 +776,7 @@
     letter-spacing: 0.14em;
     line-height: 1.2;
     text-transform: uppercase;
-    color: var(--foreground);
+    color: var(--gold);
   }
   .site-footer__heading::before {
     content: "";
@@ -801,7 +804,7 @@
     transition: background 0.25s ease;
   }
   .site-footer__contact-list li:hover {
-    background: oklch(0.97 0.006 78 / 90%);
+    background: oklch(1 0 0 / 8%);
   }
   .site-footer__contact-list a {
     color: inherit;
@@ -829,7 +832,8 @@
     margin-top: 6px;
     font-size: 13px;
     line-height: 1.55;
-    color: var(--muted-foreground);
+    color: var(--primary-foreground);
+    opacity: 0.75;
   }
   .site-footer__map-frame {
     overflow: hidden;
@@ -851,7 +855,6 @@
     margin-top: 12px;
     font-size: 12px;
     font-weight: 600;
-    color: var(--gold);
     text-decoration: none;
   }
   .site-footer__maps-link:hover {
@@ -859,34 +862,15 @@
     text-underline-offset: 2px;
   }
   .site-footer__bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
     padding-block: 20px 26px;
-    border-top: 1px solid var(--border);
-    background: oklch(0.995 0.002 78 / 60%);
+    border-top: 1px solid oklch(1 0 0 / 14%);
   }
   .site-footer__copy {
     margin: 0;
     font-size: 11px;
     letter-spacing: 0.02em;
-    color: var(--muted-foreground);
-  }
-  .footer-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 20px;
-    font-size: 12px;
-  }
-  .site-footer__nav-link {
-    color: var(--foreground);
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: color 0.2s ease;
-  }
-  .site-footer__nav-link:hover {
-    color: var(--gold);
+    color: var(--primary-foreground);
+    opacity: 0.78;
   }
   .site-header-1.site-page-header {
     display: block;
@@ -924,12 +908,6 @@
   }
   .site-page-header .site-header__cta {
     border: none;
-    border-radius: 10px;
-    text-transform: capitalize;
-    font-family: var(--font-dm-serif);
-  }
-  .site-page-header .site-header__cta svg {
-    color: var(--header-cta-accent);
   }
   .whatsapp-float {
     position: fixed;
