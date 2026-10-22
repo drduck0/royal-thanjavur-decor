@@ -6,7 +6,7 @@ type ContactCtaSectionProps = {
   id?: string;
   eyebrow: string;
   title: TitleLine[];
-  description: string;
+  description: string | readonly string[];
   titleId?: string;
   actions: ReactNode;
 };
@@ -26,7 +26,17 @@ export function ContactCtaSection({
         <h2 id={titleId}>
           <HeadlineLines lines={title} />
         </h2>
-        <p>{description}</p>
+        <p>
+          {Array.isArray(description) ? (
+            <>
+              {description[0]}
+              <br />
+              {description[1]}
+            </>
+          ) : (
+            description
+          )}
+        </p>
         {actions}
       </div>
     </section>

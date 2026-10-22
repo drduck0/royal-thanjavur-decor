@@ -5,22 +5,26 @@ import { useAnimateWhenInView } from "@/hooks/use-animate-when-in-view";
 import { homeSectionIds } from "@/lib/routes";
 
 export function AboutSection() {
-  const { ref, animate } = useAnimateWhenInView<HTMLElement>();
+  const { ref, animate } = useAnimateWhenInView<HTMLDivElement>({
+    threshold: 0,
+    rootMargin: "0px 0px 25% 0px",
+  });
 
   return (
     <section
-      ref={ref}
       id={homeSectionIds.about}
       className="about-cards motion-section section page-width"
       aria-labelledby="about-title"
     >
-      <SectionIntro
-        eyebrow={aboutSection.eyebrow}
-        title={aboutSection.title}
-        description={aboutSection.intro}
-        titleId="about-title"
-        titleCountRun={animate}
-      />
+      <div ref={ref} className="about-section-heading-anchor">
+        <SectionIntro
+          eyebrow={aboutSection.eyebrow}
+          title={aboutSection.title}
+          description={aboutSection.intro}
+          titleId="about-title"
+          titleCountRun={animate}
+        />
+      </div>
       <div className="about-body">
         <div className="about-prose">
           {aboutSection.openingParagraphs.map((paragraph) => (

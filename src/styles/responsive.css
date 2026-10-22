@@ -32,8 +32,8 @@
   :root {
     --hero-shade: linear-gradient(
       90deg,
-      oklch(0.235385823 0.087017151 29.1435954 / 94%),
-      oklch(0.235385823 0.087017151 29.1435954 / 62%)
+      oklch(0.235385823 0.087017151 29.1435954 / 92%),
+      oklch(0.32 0.01 30 / 28%)
     );
   }
   .page-width {
@@ -183,7 +183,7 @@
     padding-block: 60px 78px;
   }
   .hero h1 {
-    font-size: 42px;
+    font-size: 40px;
     margin-top: 24px;
   }
   .hero-description {

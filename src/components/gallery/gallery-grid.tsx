@@ -12,7 +12,7 @@ export function GalleryGrid({ designs, onSelect }: GalleryGridProps) {
   return (
     <div className="gallery-grid">
       {designs.map((design, index) => (
-        <article className="gallery-item" key={design.title}>
+        <article className="gallery-item" key={design.id}>
           <Button
             variant="ghost"
             className="gallery-image-button h-auto w-full p-0"

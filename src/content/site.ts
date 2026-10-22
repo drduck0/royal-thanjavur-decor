@@ -15,15 +15,8 @@ import specialWorkFairyLights from "@/assets/special-works/fairy-lights.png";
 import specialWorkBananaLeafStage from "@/assets/special-works/banana-leaf-stage.png";
 import specialWorkWeddingSedan from "@/assets/special-works/wedding-sedan.png";
 import { appPaths } from "@/lib/routes";
-import traditionalPhoto from "@/assets/gallery/traditional-decor.jpg";
-import galleryVintageSofaStage from "@/assets/gallery/gallery-vintage-sofa-stage.jpg";
-import galleryBlueFloralArches from "@/assets/gallery/gallery-blue-floral-arches.jpg";
-import galleryCeremonyThrone from "@/assets/gallery/gallery-ceremony-throne.jpg";
-import galleryTealMarbleStage from "@/assets/gallery/gallery-teal-marble-stage.jpg";
-import galleryWhiteGoldStage from "@/assets/gallery/gallery-white-gold-stage.jpg";
-import galleryBirthdayArjunKrishna from "@/assets/gallery/gallery-birthday-arjun-krishna.jpg";
-import galleryPurpleFloralStage from "@/assets/gallery/gallery-purple-floral-stage.jpg";
-import galleryTealButterflyStage from "@/assets/gallery/gallery-teal-butterfly-stage.jpg";
+import traditionalPhoto from "@/assets/about/traditional-decor.jpg";
+import { galleryCategories, galleryDesigns } from "@/content/gallery-catalog";
 import {
   CalendarDays,
   Cake,
@@ -69,6 +62,8 @@ export interface ServiceItem {
 }
 
 export interface GalleryDesign {
+  /** Stable key for lists (file path slug). */
+  id: string;
   title: string;
   category: string;
   image: string;
@@ -172,7 +167,7 @@ export const hero = {
   eyebrow: "Beautiful beginnings. Unforgettable celebrations.",
   title: [
     { text: "Premium Wedding & " },
-    { text: "Event Decorations in" },
+    { text: "Event Planner in" },
     { text: "Thanjavur", accent: true },
   ] as TitleLine[],
   description:
@@ -184,6 +179,11 @@ export const hero = {
     src: heroStagePhoto,
     alt: "Symmetrical floral wedding stage with pink backdrop, carved sofa and red patterned carpet",
   },
+  /** Home hero background — random gallery slides with crossfade. */
+  slideshow: {
+    intervalMs: 8000,
+    crossfadeDurationMs: 1100,
+  },
 };
 
 // ---------- Celebration stats (reusable block) ----------
@@ -191,7 +191,7 @@ export const celebrationStats = {
   ariaLabel: "Our celebrations in numbers",
   items: [
     { label: "Weddings", value: 700, suffix: "+" },
-    { label: "Birthday events", value: 40, suffix: "+" },
+    { label: "Birthday events", value: 150, suffix: "+" },
     { label: "Tent house", value: 1, suffix: "K+" },
     { label: "Happy customers", value: 5, suffix: "K+" },
   ] as {
@@ -341,15 +341,6 @@ export const servicesSection = {
   ] as ServiceItem[],
 };
 
-const specialiseGalleryCategory: Record<ServiceItem["type"], string> = {
-  Wedding: "Wedding stages",
-  Birthday: "Birthday celebrations",
-  "House warming": "Traditional functions",
-  Puberty: "Traditional functions",
-  "Baby shower": "Receptions",
-  Engagement: "Wedding stages",
-};
-
 // ---------- Special works ----------
 export const specialWorksSection = {
   eyebrow: "OUR SPECIAL WORKS IN WEDDINGS",
@@ -488,8 +479,10 @@ export const contactSection = {
     { text: "Your next beautiful memory" },
     { text: "starts here.", accent: true },
   ] as TitleLine[],
-  description:
-    "A date, an occasion, a little inspiration. Let’s give your celebration the Royal Decor touch.",
+  description: [
+    "A date, an occasion, a little inspiration. Let’s give your celebration",
+    "The Royal Decor touch.",
+  ],
   cta: "Let’s Plan Your Event",
 };
 
@@ -514,68 +507,8 @@ export const gallerySection = {
   description:
     "Discover a world of flowers, colour and celebration. Find the little details that speak to your big day.",
   allLabel: "All decorations",
-  categories: [
-    "Wedding stages",
-    "Receptions",
-    "Traditional functions",
-    "Birthday celebrations",
-  ],
-  designs: [
-    {
-      title: "Vintage sofa stage",
-      category: "Wedding stages",
-      image: galleryVintageSofaStage,
-      alt: "Wedding stage with carved vintage sofa, white drapes and purple florals",
-    },
-    {
-      title: "Blue floral arch backdrop",
-      category: "Wedding stages",
-      image: galleryBlueFloralArches,
-      alt: "Blue textured backdrop with white floral arches and mustard seating",
-    },
-    {
-      title: "Ceremony throne backdrop",
-      category: "Traditional functions",
-      image: galleryCeremonyThrone,
-      alt: "Traditional ceremony stage with throne chair, garlands and cow motifs",
-    },
-    {
-      title: "Teal marble ring stage",
-      category: "Wedding stages",
-      image: galleryTealMarbleStage,
-      alt: "Teal marble backdrop with illuminated rings, florals and teal sofa",
-    },
-    {
-      title: "White and gold floral stage",
-      category: "Wedding stages",
-      image: galleryWhiteGoldStage,
-      alt: "White and gold wedding stage with backlit arches and floral aisle",
-    },
-    {
-      title: "Peacock-themed first birthday",
-      category: "Birthday celebrations",
-      image: galleryBirthdayArjunKrishna,
-      alt: "Blue and white first birthday stage with peacock balloons and Krishna theme",
-    },
-    {
-      title: "Purple floral mandap stage",
-      category: "Traditional functions",
-      image: galleryPurpleFloralStage,
-      alt: "Purple and white floral stage with ornate chair and banana leaf accents",
-    },
-    {
-      title: "Teal butterfly stage",
-      category: "Receptions",
-      image: galleryTealButterflyStage,
-      alt: "Teal draped reception stage with floral rings and butterfly lights",
-    },
-    ...servicesSection.items.map((item) => ({
-      title: item.title,
-      category: specialiseGalleryCategory[item.type],
-      image: item.image,
-      alt: item.description,
-    })),
-  ] as GalleryDesign[],
+  categories: galleryCategories,
+  designs: galleryDesigns,
 };
 
 export const galleryContact = {

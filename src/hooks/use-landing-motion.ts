@@ -10,7 +10,7 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
     const ctx = gsap.context(() => {
       const ease = "power3.out";
 
-      gsap.from(".hero-photo", {
+      gsap.from(".hero-photo-stack, .hero > .hero-photo", {
         scale: 1.1,
         duration: 3.2,
         ease: "power2.out",
@@ -39,7 +39,8 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
 
       gsap.utils.toArray<HTMLElement>(".motion-section", root).forEach((section) => {
         const heading = section.querySelector(".section-heading");
-        if (heading) {
+        // About title uses a count-up; fading the heading hides the animation on mobile.
+        if (heading && !section.classList.contains("about-cards")) {
           gsap.from(heading, {
             scrollTrigger: {
               trigger: section,
@@ -119,7 +120,7 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         ease,
       });
 
-      gsap.to(".hero-photo", {
+      gsap.to(".hero-photo-stack, .hero > .hero-photo", {
         yPercent: 8,
         ease: "none",
         scrollTrigger: {

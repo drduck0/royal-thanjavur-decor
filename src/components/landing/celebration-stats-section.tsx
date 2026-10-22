@@ -3,7 +3,16 @@ import { useAnimateWhenInView } from "@/hooks/use-animate-when-in-view";
 import { celebrationStats } from "@/content/site";
 import { homeSectionIds } from "@/lib/routes";
 
-const STAGGER_MS = 120;
+const STAGGER_MS_DESKTOP = 120;
+const STAGGER_MS_MOBILE = 40;
+
+function staggerMs(index: number) {
+  const step =
+    typeof window !== "undefined" && window.matchMedia("(max-width: 640px)").matches
+      ? STAGGER_MS_MOBILE
+      : STAGGER_MS_DESKTOP;
+  return index * step;
+}
 
 type CelebrationStatProps = {
   label: string;
@@ -68,7 +77,7 @@ export function CelebrationStatsSection({
               label={item.label}
               value={item.value}
               suffix={item.suffix}
-              delayMs={index * STAGGER_MS}
+              delayMs={staggerMs(index)}
               run={animate}
               {...(item.showOnMobile === false ? { showOnMobile: false } : {})}
             />

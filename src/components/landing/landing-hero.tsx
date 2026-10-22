@@ -2,22 +2,14 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import { hero } from "@/content/site";
 import { HeadlineLines } from "@/components/headline-lines";
-import { SiteImage } from "@/components/site-image";
+import { HeroGallerySlideshow } from "@/components/landing/hero-gallery-slideshow";
 import { Button } from "@/components/ui/button";
 import { appPaths } from "@/lib/routes";
 
 export function LandingHero() {
   return (
     <section className="hero" aria-labelledby="hero-title">
-      <SiteImage
-        src={hero.image.src}
-        className="hero-photo"
-        alt={hero.image.alt}
-        width={1024}
-        height={580}
-        priority
-        sizes="100vw"
-      />
+      <HeroGallerySlideshow />
       <div className="hero-content page-width">
         <p className="eyebrow">{hero.eyebrow}</p>
         <h1 id="hero-title">
