@@ -44,7 +44,9 @@
   .site-header-1--contact .site-header-1__link-text {
     display: none;
   }
-  .site-header-1--contact .site-header-1__contact-cluster--show-text-mobile .site-header-1__link-text {
+  .site-header-1--contact
+    .site-header-1__contact-cluster--show-text-mobile
+    .site-header-1__link-text {
     display: inline;
   }
   .site-header-1--contact .site-header-1__contact-all {
@@ -180,7 +182,7 @@
     padding-block: 60px 78px;
   }
   .hero h1 {
-    font-size: 38px;
+    font-size: 34px;
     margin-top: 24px;
   }
   .hero-description {
