@@ -1,5 +1,4 @@
 import brandLogo from "@/assets/brand/logos.png";
-import heroStagePhoto from "@/assets/hero/hero-wedding-stage.jpg";
 import weddingStageDecorPhoto from "@/assets/specialise/wedding-stage.png";
 import birthdayEventPhoto from "@/assets/specialise/birthday-stage.png";
 import pubertyEventPhoto from "@/assets/specialise/puberty-stage.png";
@@ -176,14 +175,15 @@ export const hero = {
   secondaryCta: "Explore our decor",
   galleryCta: "Visit the gallery",
   image: {
-    src: heroStagePhoto,
-    alt: "Symmetrical floral wedding stage with pink backdrop, carved sofa and red patterned carpet",
+    src:
+      galleryDesigns.find(
+        (item) => item.id === "engagement/luxurious-garden-wedding-throne-backdrop",
+      )?.image ?? "",
+    alt: "Luxurious Garden Wedding Throne Backdrop — Royal Decor engagement styling in Thanjavur",
   },
-  /** Home hero background — random gallery slides with crossfade. */
-  slideshow: {
-    intervalMs: 8000,
-    crossfadeDurationMs: 1100,
-  },
+  /** After the opening photo, the hero cycles random gallery photos (Birthday Events excluded). */
+  slideshowIntervalMs: 8000,
+  slideshowFadeMs: 1100,
 };
 
 // ---------- Celebration stats (reusable block) ----------

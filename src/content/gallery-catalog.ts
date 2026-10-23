@@ -1,15 +1,8 @@
 import manifest from "./gallery-manifest.json";
 import type { GalleryDesign } from "./site";
+import { cloudinaryCloudName, cloudinaryImageUrl } from "@/lib/cloudinary-image";
 
-const galleryImages = import.meta.glob<string>("../assets/gallery/**/*.{png,jpg,jpeg,webp}", {
-  eager: true,
-  import: "default",
-});
-
-function moduleUrl(imagePath: string): string | undefined {
-  const relative = imagePath.replace("@/assets/", "../assets/");
-  return galleryImages[relative];
-}
+const cloudName = cloudinaryCloudName();
 
 export const galleryCategories = [
   "Engagement",
@@ -20,16 +13,10 @@ export const galleryCategories = [
   "Puberty",
 ];
 
-export const galleryDesigns: GalleryDesign[] = manifest.flatMap((item) => {
-  const image = moduleUrl(item.imagePath);
-  if (!image) return [];
-  return [
-    {
-      id: item.id,
-      title: item.title,
-      category: item.category,
-      image,
-      alt: item.alt,
-    },
-  ];
-});
+export const galleryDesigns: GalleryDesign[] = manifest.map((item) => ({
+  id: item.id,
+  title: item.title,
+  category: item.category,
+  image: cloudinaryImageUrl(cloudName, item.id),
+  alt: item.alt,
+}));

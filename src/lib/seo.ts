@@ -1,6 +1,5 @@
 import type { LinkHTMLAttributes } from "react";
-import heroStagePhoto from "@/assets/hero/hero-wedding-stage.jpg";
-import { site, siteSeo } from "@/content/site";
+import { hero, site, siteSeo } from "@/content/site";
 
 type PageSeoInput = {
   title: string;
@@ -24,7 +23,7 @@ function absoluteAssetUrl(assetPath: string): string | undefined {
 export function buildPageHead(input: PageSeoInput) {
   const ogTitle = input.ogTitle ?? input.title;
   const ogDescription = input.ogDescription ?? input.description;
-  const ogImage = absoluteAssetUrl(heroStagePhoto);
+  const ogImage = absoluteAssetUrl(hero.image.src);
   const canonical = siteSeo.siteUrl ? `${siteSeo.siteUrl}${input.path}` : undefined;
 
   const meta = [
@@ -54,7 +53,7 @@ export function buildPageHead(input: PageSeoInput) {
     links.push({
       rel: "preload",
       as: "image",
-      href: heroStagePhoto,
+      href: hero.image.src,
       fetchPriority: "high",
     });
   }

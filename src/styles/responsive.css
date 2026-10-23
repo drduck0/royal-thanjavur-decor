@@ -32,8 +32,8 @@
   :root {
     --hero-shade: linear-gradient(
       90deg,
-      oklch(0.235385823 0.087017151 29.1435954 / 92%),
-      oklch(0.32 0.01 30 / 28%)
+      oklch(0.235385823 0.087017151 29.1435954 / 84%),
+      oklch(0.32 0.01 30 / 16%)
     );
   }
   .page-width {
@@ -47,9 +47,7 @@
   .site-header-1--contact .site-header-1__link-text {
     display: none;
   }
-  .site-header-1--contact
-    .site-header-1__contact-cluster--show-text-mobile
-    .site-header-1__link-text {
+  .site-header-1--contact .site-header-1__contact-cluster--show-text-mobile .site-header-1__link-text {
     display: inline;
   }
   .site-header-1--contact .site-header-1__contact-all {
@@ -185,7 +183,7 @@
     padding-block: 60px 78px;
   }
   .hero h1 {
-    font-size: 38px;
+    font-size: 40px;
     margin-top: 24px;
   }
   .hero-description {

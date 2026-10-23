@@ -10,7 +10,7 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
     const ctx = gsap.context(() => {
       const ease = "power3.out";
 
-      gsap.from(".hero-photo-stack, .hero > .hero-photo", {
+      gsap.from(".hero > .hero-photo", {
         scale: 1.1,
         duration: 3.2,
         ease: "power2.out",
@@ -120,7 +120,7 @@ export function useLandingMotion(scopeRef: RefObject<HTMLElement | null>) {
         ease,
       });
 
-      gsap.to(".hero-photo-stack, .hero > .hero-photo", {
+      gsap.to(".hero > .hero-photo", {
         yPercent: 8,
         ease: "none",
         scrollTrigger: {

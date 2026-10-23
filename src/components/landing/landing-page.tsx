@@ -8,7 +8,6 @@ import { LandingContactSection } from "@/components/landing/landing-contact-sect
 import { LandingHeroViewport } from "@/components/landing/landing-hero-viewport";
 import { ServicesSection } from "@/components/landing/services-section";
 import { SpecialWorksSection } from "@/components/landing/special-works-section";
-import { StorySection } from "@/components/landing/story-section";
 import { TestimonialsSection } from "@/components/landing/testimonials-section";
 import { LocalBusinessJsonLd } from "@/components/local-business-json-ld";
 import { appPaths, homeSectionIds } from "@/lib/routes";

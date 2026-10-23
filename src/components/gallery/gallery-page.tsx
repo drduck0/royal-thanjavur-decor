@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useGalleryMotion } from "@/hooks/use-gallery-motion";
 import { SiteFooter } from "@/components";
@@ -52,7 +51,7 @@ export function GalleryPage() {
               </Button>
             ))}
           </div>
-          <GalleryGrid designs={visible} onSelect={setSelected} />
+          <GalleryGrid key={category} designs={visible} onSelect={setSelected} />
         </section>
         <ContactCtaSection
           eyebrow={galleryContact.eyebrow}

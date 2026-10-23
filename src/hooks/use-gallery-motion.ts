@@ -18,19 +18,6 @@ export function useGalleryMotion(scopeRef: RefObject<HTMLElement | null>) {
         delay: 0.2,
         ease,
       });
-
-      gsap.from(".gallery-item", {
-        scrollTrigger: {
-          trigger: ".gallery-grid",
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.75,
-        stagger: 0.1,
-        ease,
-      });
     }, root);
 
     return () => ctx.revert();
