@@ -180,11 +180,11 @@
     padding-block: 60px 78px;
   }
   .hero h1 {
-    font-size: 52px;
+    font-size: 38px;
     margin-top: 24px;
   }
   .hero-description {
-    font-size: 17px;
+    font-size: 12px;
     max-width: 330px;
   }
   .section-heading .eyebrow.eyebrow--section::before {

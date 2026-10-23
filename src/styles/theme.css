@@ -41,6 +41,10 @@
   --overlay: oklch(0.235385823 0.087017151 29.1435954 / 80%);
   --destructive: oklch(0.55 0.19 28);
   --header-cta-accent: #e9bc86;
+  --type-kicker: clamp(0.875rem, 0.67rem + 1.1vw, 1.25rem);
+  --type-section: clamp(1.625rem, 0.8rem + 3.35vw, 2.875rem);
+  --type-display: clamp(1.75rem, 0.9rem + 3.85vw, 3.25rem);
+  --type-body: clamp(0.9375rem, 0.9rem + 0.15vw, 1.0625rem);
   --hero-shade: linear-gradient(
     90deg,
     oklch(0.235385823 0.087017151 29.1435954 / 84%) 0%,
