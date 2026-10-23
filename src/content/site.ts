@@ -100,7 +100,7 @@ export const navigation: NavItem[] = [
 ];
 
 // ---------- Contact details (header, contact section, links) ----------
-const whatsappNumber = "918754615441";
+const whatsappNumber = "919994928274";
 const whatsappMessage = "Hi Royal Decor Thanjavur, I'd like to discuss event decor.";
 
 /** Royal Decor — Google Maps place pin. */
@@ -109,8 +109,8 @@ const mapLongitude = 79.1211208;
 
 export const contactDetails = {
   email: "royaldecorthanjavur@gmail.com",
-  phoneDisplay: "+91 87546 15441",
-  phoneHref: "tel:+918754615441",
+  phoneDisplay: "+91 9994928274",
+  phoneHref: "tel:+919994928274",
   whatsappNumber,
   whatsappMessage,
   whatsappHref: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
@@ -181,7 +181,7 @@ export const hero = {
       )?.image ?? "",
     alt: "Luxurious Garden Wedding Throne Backdrop — Royal Decor engagement styling in Thanjavur",
   },
-  /** After the opening photo, the hero cycles random gallery photos (Birthday Events excluded). */
+  slideshowCategories: ["Engagement", "Wedding Stages", "Reception", "Baby Shower"],
   slideshowIntervalMs: 8000,
   slideshowFadeMs: 1100,
 };

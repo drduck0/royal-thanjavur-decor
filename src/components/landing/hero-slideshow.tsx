@@ -8,8 +8,10 @@ const intervalMs = hero.slideshowIntervalMs;
 const fadeMs = hero.slideshowFadeMs;
 const opening = hero.image.src;
 
+const heroCategories = new Set<string>(hero.slideshowCategories);
+
 const slides = galleryDesigns
-  .filter((design) => design.category !== "Birthday Events" && Boolean(design.image))
+  .filter((design) => heroCategories.has(design.category) && Boolean(design.image))
   .map((design) => design.image);
 
 const pool = slides.length > 0 ? slides : [opening];
