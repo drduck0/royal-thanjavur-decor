@@ -9,7 +9,13 @@
     display: flex;
     padding: 0 14% 0 14%;
     min-height: 35px;
-    background: radial-gradient(circle,rgba(255, 255, 255, 1) 0%, rgba(249, 234, 131, 1) 0%, rgba(179, 125, 53, 1) 100%, rgba(179, 125, 53, 1) 100%);
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(249, 234, 131, 1) 0%,
+      rgba(179, 125, 53, 1) 100%,
+      rgba(179, 125, 53, 1) 100%
+    );
     color: var(--primary);
   }
   .site-header-1--contact {
@@ -242,7 +248,7 @@
     padding-block: 36px 40px;
     font-family: var(--font-dm-serif);
   }
-  
+
   .celebration-stats {
     display: flex;
     align-items: flex-start;
@@ -748,7 +754,6 @@
   .contact .eyebrow {
     justify-content: center;
     color: var(--gold);
-    font-size: var(--type-kicker);
     letter-spacing: 0.08em;
   }
   .contact p {
