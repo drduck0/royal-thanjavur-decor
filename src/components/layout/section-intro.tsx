@@ -12,7 +12,7 @@ export const centeredSectionEyebrowClassName =
 type SectionIntroProps = {
   eyebrow: string;
   title: TitleLine[];
-  description: string;
+  description?: string;
   titleId: string;
   eyebrowClassName?: string;
   titleCountRun?: boolean;

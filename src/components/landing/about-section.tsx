@@ -6,8 +6,8 @@ import { homeSectionIds } from "@/lib/routes";
 
 export function AboutSection() {
   const { ref, animate } = useAnimateWhenInView<HTMLDivElement>({
-    threshold: 0,
-    rootMargin: "0px 0px 25% 0px",
+    threshold: 0.6,
+    rootMargin: "0px",
   });
 
   return (
@@ -20,7 +20,6 @@ export function AboutSection() {
         <SectionIntro
           eyebrow={aboutSection.eyebrow}
           title={aboutSection.title}
-          description={aboutSection.intro}
           titleId="about-title"
           titleCountRun={animate}
         />

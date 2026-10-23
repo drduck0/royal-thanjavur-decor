@@ -56,8 +56,6 @@ export interface ServiceItem {
   title: string;
   image: string;
   description: string;
-  /** Occasion label (e.g. for future contact flows). */
-  type: string;
 }
 
 export interface GalleryDesign {
@@ -111,17 +109,13 @@ export const contactDetails = {
   email: "royaldecorthanjavur@gmail.com",
   phoneDisplay: "+91 9994928274",
   phoneHref: "tel:+919994928274",
-  whatsappNumber,
-  whatsappMessage,
   whatsappHref: `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`,
   whatsappLabel: "WhatsApp",
   whatsappFloatLabel: "Chat with us on WhatsApp",
   instagramHref: "https://www.instagram.com/royal_decor.thanjavur",
   instagramHandle: "@royal_decor.thanjavur",
   instagramLabel: "Royal Decor Thanjavur on Instagram",
-  serviceAreaLabel: "Service area",
   serviceArea: "Thanjavur and nearby towns — including Kumbakonam, Mannargudi, and Ariyalur.",
-  responseTime: "We aim to reply within one business day.",
   addressLines: [
     "Sundaram Complex, 2nd St, Vairam Nagar (near Trends)",
     "Natarajan Nagar, New Housing Unit, Thanjavur, Tamil Nadu 613005",
@@ -171,8 +165,6 @@ export const hero = {
   ] as TitleLine[],
   description:
     "Your moments deserve a beautiful setting. Thoughtfully crafted stage and function decorations, made with love in Thanjavur.",
-  primaryCta: "Plan your celebration",
-  secondaryCta: "Explore our decor",
   galleryCta: "Visit the gallery",
   image: {
     src:
@@ -209,7 +201,6 @@ export const aboutSection = {
     { animatedValue: 26, animatedSuffix: "+", text: " Years of " },
     { text: "Excellence", accent: true },
   ] as TitleLine[],
-  intro: "",
   image: {
     src: traditionalPhoto,
     alt: "Traditional celebration decor with floral mandap and warm lighting",
@@ -301,42 +292,36 @@ export const servicesSection = {
       image: weddingStageDecorPhoto,
       description:
         "Statement stages, beautiful blooms and thoughtful details for the beginning of your forever.",
-      type: "Wedding",
     },
     {
       title: "Birthday Events",
       image: birthdayEventPhoto,
       description:
         "Playful themes, balloon styling and picture-perfect stages for first birthdays and every milestone.",
-      type: "Birthday",
     },
     {
       title: "House Warming",
       image: houseWarmingPhoto,
       description:
         "Floral entrance décor, rangoli and traditional welcomes that make your new home feel blessed from day one.",
-      type: "House warming",
     },
     {
       title: "Puberty",
       image: pubertyEventPhoto,
       description:
         "Traditional floral stages and thoughtful details to honour this meaningful coming-of-age celebration.",
-      type: "Puberty",
     },
     {
       title: "Baby Shower",
       image: babyShowerPhoto,
       description:
         "Warm, elegant stages with florals and thoughtful details to welcome your little one in style.",
-      type: "Baby shower",
     },
     {
       title: "Engagement",
       image: engagementPhoto,
       description:
         "Romantic floral stages and elegant backdrops to celebrate the beginning of your journey together.",
-      type: "Engagement",
     },
   ] as ServiceItem[],
 };
@@ -355,49 +340,41 @@ export const specialWorksSection = {
       title: "Welcome Board",
       image: specialWorkBlushBackdrop,
       description: "Soft blush tones and layered florals for an intimate ceremony setting.",
-      type: "Backdrop",
     },
     {
       title: "Serial Lights",
       image: specialWorkFairyLights,
       description: "Ambient golden fairy lights to add warmth and sparkle to your venue.",
-      type: "Lighting",
     },
     {
       title: "Shamiyana Tents",
       image: specialWorkCelebrationCanopy,
       description: "Grand outdoor canopy draping in rich red and gold for wedding celebrations.",
-      type: "Canopy",
     },
     {
       title: "Arabian Tents",
       image: specialWorkGardenPavilion,
       description: "Burgundy and gold pavilion styling for grand outdoor celebrations.",
-      type: "Pavilion",
     },
     {
       title: "Car Decoration",
       image: specialWorkWeddingSedan,
       description: "Floral garlands and ribbon styling for the bride and groom’s arrival in style.",
-      type: "Wedding car",
     },
     {
       title: "Doli Pallaku",
       image: specialWorkBanquetDisplay,
       description: "Cascade florals and table styling for memorable reception moments.",
-      type: "Banquet",
     },
     {
       title: "Tables and Chairs",
       image: specialWorkGardenBanquet,
       description: "Open-air elegance with gold accents and coordinated guest seating.",
-      type: "Banquet",
-    },    
+    },
     {
       title: "Vaalai Maram",
       image: specialWorkBananaLeafStage,
       description: "Tropical banana leaf styling with gold accents and soft draped lighting.",
-      type: "Stage",
     },
   ] as ServiceItem[],
 };
@@ -487,7 +464,6 @@ export const contactSection = {
 };
 
 export const siteHeader = {
-  primaryCta: contactSection.cta,
   primaryCtaShort: "Plan event",
 };
 
@@ -507,6 +483,7 @@ export const gallerySection = {
   description:
     "Discover a world of flowers, colour and celebration. Find the little details that speak to your big day.",
   allLabel: "All decorations",
+  scrollTopLabel: "Back to top",
   categories: galleryCategories,
   designs: galleryDesigns,
 };

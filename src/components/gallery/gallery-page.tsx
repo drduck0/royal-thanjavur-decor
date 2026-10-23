@@ -9,6 +9,7 @@ import { PlanEventCtaButton } from "@/components/plan-event-cta-button";
 import { Button } from "@/components/ui/button";
 import { GalleryGrid } from "./gallery-grid";
 import { GalleryLightbox } from "./gallery-lightbox";
+import { GalleryScrollTop } from "./gallery-scroll-top";
 
 export function GalleryPage() {
   const mainRef = useRef<HTMLElement>(null);
@@ -62,6 +63,7 @@ export function GalleryPage() {
         />
       </main>
       <SiteFooter />
+      <GalleryScrollTop />
       <GalleryLightbox
         design={current}
         index={selected}
